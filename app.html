@@ -1,0 +1,425 @@
+<html>
+
+<head>
+    <style>
+        .cards td {
+            text-align: center;
+            padding:10px;
+        }
+        .percentages td {
+            text-align: center;
+            padding:10px;
+        }
+        button {
+            padding: 20px;
+            margin: 10px;
+            font-size: 40px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="house">
+        <h2>House</h2>
+        <h3 id="houseHand"></h3>
+        <button name="card" data-param-val="11" data-param-count="-1">A</button>
+        <button name="card" data-param-val="2" data-param-count="1">2</button>
+        <button name="card" data-param-val="3" data-param-count="1">3</button>
+        <button name="card" data-param-val="4" data-param-count="1">4</button>
+        <button name="card" data-param-val="5" data-param-count="1">5</button>
+        <button name="card" data-param-val="6" data-param-count="1">6</button>
+        <button name="card" data-param-val="7" data-param-count="0">7</button>
+        <button name="card" data-param-val="8" data-param-count="0">8</button>
+        <button name="card" data-param-val="9" data-param-count="0">9</button>
+        <button name="card" data-param-val="10" data-param-count="-1">10</button>
+        <button name="card" data-param-val="10" data-param-count="-1">J</button>
+        <button name="card" data-param-val="10" data-param-count="-1">Q</button>
+        <button name="card" data-param-val="10" data-param-count="-1">K</button>
+    </div>
+<br/>
+<br/>
+    <div id="playerHand">
+        <h2>Player</h2>
+        <h3 id="playerPrimaryHand"></h3>
+        <button name="card" data-param-val="11" data-param-count="-1">A</button>
+        <button name="card" data-param-val="2" data-param-count="1">2</button>
+        <button name="card" data-param-val="3" data-param-count="1">3</button>
+        <button name="card" data-param-val="4" data-param-count="1">4</button>
+        <button name="card" data-param-val="5" data-param-count="1">5</button>
+        <button name="card" data-param-val="6" data-param-count="1">6</button>
+        <button name="card" data-param-val="7" data-param-count="0">7</button>
+        <button name="card" data-param-val="8" data-param-count="0">8</button>
+        <button name="card" data-param-val="9" data-param-count="0">9</button>
+        <button name="card" data-param-val="10" data-param-count="-1">10</button>
+        <button name="card" data-param-val="10" data-param-count="-1">J</button>
+        <button name="card" data-param-val="10" data-param-count="-1">Q</button>
+        <button name="card" data-param-val="10" data-param-count="-1">K</button>
+        <br />
+        <button id="split" style="display:none">Split</button>
+    </div>
+<br/>
+<br/>
+    <div id="splitHand" style="display:none">
+        <h2>Split hand</h2>
+        <h3 id="playerSplitHand"></h3>
+        <button name="card" data-param-val="11" data-param-count="-1">A</button>
+        <button name="card" data-param-val="2" data-param-count="1">2</button>
+        <button name="card" data-param-val="3" data-param-count="1">3</button>
+        <button name="card" data-param-val="4" data-param-count="1">4</button>
+        <button name="card" data-param-val="5" data-param-count="1">5</button>
+        <button name="card" data-param-val="6" data-param-count="1">6</button>
+        <button name="card" data-param-val="7" data-param-count="0">7</button>
+        <button name="card" data-param-val="8" data-param-count="0">8</button>
+        <button name="card" data-param-val="9" data-param-count="0">9</button>
+        <button name="card" data-param-val="10" data-param-count="-1">10</button>
+        <button name="card" data-param-val="10" data-param-count="-1">J</button>
+        <button name="card" data-param-val="10" data-param-count="-1">Q</button>
+        <button name="card" data-param-val="10" data-param-count="-1">K</button>   
+    </div>
+    <br />
+    <br />
+    <p>Running count: <span id="runningCount"></span></p>
+    <p>True count: <span id="trueCount"></span> <span id="calc"></span></p>
+    <p>Action: <span id="action"></span></p>
+    <div>
+        <table class="cards">
+            <tr>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>J</td>
+                <td>Q</td>
+                <td>K</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td id="p2"></td>
+                <td id="p3"></td>
+                <td id="p4"></td>
+                <td id="p5"></td>
+                <td id="p6"></td>
+                <td id="p7"></td>
+                <td id="p8"></td>
+                <td id="p9"></td>
+                <td id="p10"></td>
+                <td id="pJ"></td>
+                <td id="pQ"></td>
+                <td id="pK"></td>
+                <td id="pA"></td>
+            </tr>
+            <tr>
+                <td id="ps26" colspan="5" style="text-align:center; background-color:aquamarine;">0</td>
+                <td id="ps79" colspan="3" style="text-align:center; background-color:bisque;">0</td>
+                <td id="ps10A" colspan="5" style="text-align:center; background-color:darkgray;">0</td>
+            </tr>
+            <tr>
+                <td id="pTotal" colspan="13" style="text-align:center;"></td>
+            </tr>
+        </table>
+    </div>
+    <button id="reset">Reset</button>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous">
+    </script>
+
+
+<script src="basicForm.js"></script>
+
+<script type="text/javascript">
+    var decks = 6;
+
+    var _playerAction;
+
+    var _game = {
+        house: { total: 0, cards: [], previousCards: [], isSoft: null },
+        player: {
+            primaryHand:
+                { total: 0, cards: [], previousCards: [], isSoft: null, canSplit: false },
+            splitHand:
+                { total: 0, cards: [], previousCards: [], isSoft: null }
+        }
+    }
+
+
+var helpers = (function () {
+    return {
+        sum: function (total, card) {
+            card = (card === 11 && hand.isSoft) ? 1 : card;
+            return total + card;
+        },
+        initialProbability: function (decks) {
+            return decks * (52 * decks);
+        }
+    }
+})();
+
+    var _deck = {
+        total: (52 * decks),
+        runningCount: 0,
+        trueCount: 0,
+        card: {
+            _a: { id: "A", count: 4*decks, probability: helpers.initialProbability(decks) },
+            _2: { id: "2", count: 4*decks, probability: helpers.initialProbability(decks) },
+            _3: { id: "3", count: 4*decks, probability: helpers.initialProbability(decks) },
+            _4: { id: "4", count: 4*decks, probability: helpers.initialProbability(decks) },
+            _5: { id: "5", count: 4*decks, probability: helpers.initialProbability(decks) },
+            _6: { id: "6", count: 4*decks, probability: helpers.initialProbability(decks) },
+            _7: { id: "7", count: 4*decks, probability: helpers.initialProbability(decks) },
+            _8: { id: "8", count: 4*decks, probability: helpers.initialProbability(decks) },
+            _9: { id: "9", count: 4*decks, probability: helpers.initialProbability(decks) },
+            _10: { id: "10", count: 4*decks, probability: helpers.initialProbability(decks) },
+            _J: { id: "J", count: 4*decks, probability: helpers.initialProbability(decks) },
+            _Q: { id: "Q", count: 4*decks, probability: helpers.initialProbability(decks) },
+            _K: { id: "K", count: 4*decks, probability: helpers.initialProbability(decks) }
+        }
+    };
+
+
+var deckFunction = (function () {
+
+    var _updateRemainingCount = function () {
+        var total = 0;
+        $.each(_deck.card, function (i, val) {
+            total += _deck.card[i].count;   
+        });
+        _deck.total = total;
+    };
+
+    var _updatePageProbabilies = function () {
+        $.each(_deck.card, function(i, val) { 
+            $("#p" + val.id).text(val.probability.toFixed(3));
+        });
+        var _26 = (_deck.card._2.probability + _deck.card._3.probability + _deck.card._4.probability + _deck.card._5.probability + _deck.card._6.probability);
+        var _79 = (_deck.card._7.probability + _deck.card._8.probability + _deck.card._9.probability);
+        var _10A = (_deck.card._10.probability + _deck.card._J.probability + _deck.card._Q.probability + _deck.card._K.probability + _deck.card._a.probability);
+        var _pTotal = _26 + _79 + _10A;
+        $("#ps26").text(_26.toFixed(3));
+        $("#ps79").text(_79.toFixed(3));
+        $("#ps10A").text(_10A.toFixed(3));
+        $("#pTotal").text(_pTotal.toFixed(3));
+    };
+
+    var _updatePageTrueCount = function () {
+        $("#runningCount").text(_deck.runningCount);
+        $("#trueCount").text(_deck.trueCount.toFixed(3));
+        $("#calc").text(_deck.total);
+    }
+
+    var _updateProbabilities = function () {
+        $.each(_deck.card, function (i, val) {
+            val.probability = (val.count / _deck.total);
+        });
+    };
+
+    var _updateCount = function (card) {        
+        // Updates a single card in the deck
+        $.each(_deck.card, function (i, val) {
+            if (val.id === card) {
+                val.count -= 1;
+            }
+        });
+    }
+
+    return {
+        updateDeck: function (card) {
+            _updateCount(card);
+            _updateRemainingCount();
+            _updateProbabilities();
+            _updatePageProbabilies();
+            //_updatePageTrueCount();
+        },
+        updateCounts: function () {
+            _updatePageTrueCount();
+        }
+    };
+})();
+
+
+
+var handFunction = (function(){
+
+    var _houseHand = function (){
+        return _game.house.cards.toString()
+    }
+
+    var _playerPrimaryHand = function () {
+        return _game.player.primaryHand.cards.toString()
+    }
+
+    var _playerSplitHand = function () {
+        return _game.player.splitHand.cards.toString()
+    }
+
+    var _calculateTrueCount = function () {
+        var remainingDecks = (_deck.total / 52);
+        _deck.trueCount = (_deck.runningCount / remainingDecks);
+    }
+
+    return {
+        isSoft: function (hand) {
+            // if playerHand has an ace in the first 2 cards
+            hand.isSoft = (hand.cards.slice(0,2).indexOf(11) != -1);
+        },
+        canSplit: function(){     
+            var cards = _game.player.primaryHand.cards;
+            if (cards.length == 2 && (cards[0] == cards[1]) && [5, 10].indexOf(cards[0]) == -1 ) 
+            {
+                _game.player.primaryHand.canSplit = true;
+            }
+        },
+        sum: function (hand) {
+            // !! Not correct A 2 = 13
+            // soft is counted as 11 for 2 cards
+            hand.total = 0;
+            // is it 21
+            // is it soft
+            // are there more than 2 cards
+            if (hand.cards.length > 2 && hand.isSoft){ // if it is soft I have taken another card
+                $.each(hand.cards, function (i, val) {
+                    val = val === 11 ? 1 : val;
+                    hand.total += val;
+                });
+            }
+            else // < 2 cards or hard so just sum them
+            {
+                
+                $.each(hand.cards, function (i, val) {
+                    //val = (val === 11 && hand.isSoft && hand.total >= 10) ? 1 : val;
+                    hand.total += val;
+                });
+            
+            }
+        },
+        update: function (hand, cardValue, cardName) {
+            hand.cards.push(cardValue);
+            hand.previousCards.push(cardName);
+        },
+        updateCount: function (cardCount) {
+            _deck.runningCount += cardCount;
+            _calculateTrueCount();
+        },
+        display: function(){
+            $("#houseHand").text(_game.house.total + " (soft: " + _game.house.isSoft + "): " + _houseHand());
+            $("#playerPrimaryHand").text(_game.player.primaryHand.total + " (soft: " + _game.player.primaryHand.isSoft + "): " + _playerPrimaryHand());
+            if (_game.player.splitHand.cards.length > 0) {
+                $("#playerSplitHand").text(_game.player.splitHand.total + " (soft: " + _game.player.splitHand.isSoft + "): " + _playerSplitHand());
+            }
+            $("#action").text(_playerAction);
+        },
+        resetHand: function () {
+            _game.house = { total: 0, cards: [], previousCards: [], isSoft: null };
+            _game.player.primaryHand = { total: 0, cards: [], previousCards: [], isSoft: null, canSplit: false };
+            _game.player.splitHand = { total: 0, cards: [], previousCards: [], isSoft: null }
+        }
+    }
+
+})();
+ 
+
+    function updateHouseHand(hand, cardValue, cardName, cardCount) {
+        
+        handFunction.update(hand, cardValue, cardName);
+
+        handFunction.isSoft(hand);
+
+        handFunction.sum(hand);
+
+        //handFunction.canSplit();
+
+        deckFunction.updateDeck(cardName);
+
+        handFunction.updateCount(cardCount);
+
+        deckFunction.updateCounts();
+
+        //_playerAction = basicForm.getAction(hand, _game.house);
+
+        handFunction.display();
+        
+    }
+
+
+    function updatePlayerHand(hand, cardValue, cardName, cardCount) {
+        
+        handFunction.update(hand, cardValue, cardName);
+
+        handFunction.isSoft(hand);
+
+        handFunction.sum(hand);
+
+        handFunction.canSplit();
+
+        deckFunction.updateDeck(cardName);
+
+        handFunction.updateCount(cardCount);
+
+        deckFunction.updateCounts();
+
+        _playerAction = basicForm.getAction(hand, _game.house);
+
+        handFunction.display();
+        
+    }
+
+    $("#house button[name='card']").on('click', function (e) {
+        var cardValue = parseInt($(e.currentTarget).attr('data-param-val'));
+        var cardCount = parseInt($(e.currentTarget).attr('data-param-count'));
+        var cardName = $(e.currentTarget).text();
+        
+        updateHouseHand(_game.house, cardValue, cardName, cardCount);
+    });
+
+    $("#playerHand button[name='card']").on('click', function (e) {
+        var cardValue = parseInt($(e.currentTarget).attr('data-param-val'));
+        var cardCount = parseInt($(e.currentTarget).attr('data-param-count'));
+        var cardName = $(e.currentTarget).text();
+        
+        updatePlayerHand(_game.player.primaryHand, cardValue, cardName, cardCount);
+        
+        if (_game.player.primaryHand.canSplit){
+            $("#split").show();
+        }
+    });
+
+    $("#splitHand button[name='card']").on('click', function (e) {
+        var cardValue = parseInt($(e.currentTarget).attr('data-param-val'));
+        var cardCount = parseInt($(e.currentTarget).attr('data-param-count'));
+        var cardName = $(e.currentTarget).text();
+        
+        updatePlayerHand(_game.player.splitHand, cardValue, cardName, cardCount);
+    });
+
+    $("#playerHand #split").on('click', function (e) {
+        
+        var _2ndCard = _game.player.primaryHand.cards.pop();
+        var _lastPrevious =_game.player.primaryHand.previousCards.pop();
+        _game.player.splitHand.cards.push(_2ndCard);
+        _game.player.splitHand.previousCards.push(_lastPrevious);
+
+        handFunction.sum(_game.player.primaryHand);
+        handFunction.sum(_game.player.splitHand);
+
+        // show second hand html
+        $("#splitHand").show();
+        $("#split").hide();
+
+        handFunction.display();
+
+        console.log(_game);
+    });
+
+    $("#reset").on('click', function() {
+        handFunction.resetHand();
+        handFunction.display();
+    })
+</script>
+
+</html>
