@@ -42,21 +42,41 @@
         "1111": [p,p,p,p,p,p,p,p,p,p]
     }
 
+var _cardNames = {
+    ace: "ace",
+    two: "two",
+    three: "three",
+    four: "four",
+    five: "five",
+    six: "six",
+    seven: "seven",
+    eight: "eight",
+    nine: "nine",
+    ten: "ten",
+    jack: "jack",
+    queen: "queen",
+    king: "king"
+}
+
+var _aceValue = {
+    hard: 11,
+    soft: 1
+}
 
 var _card = {
-    _a: { name: "A", value: 11, countValue: 0 },
-    _2: { name: "2", value: 2, countValue: 0 },
-    _3: { name: "3", value: 3, countValue: 0 },
-    _4: { name: "4", value: 4, countValue: 0 },
-    _5: { name: "5", value: 5, countValue: 0 },
-    _6: { name: "6", value: 6, countValue: 0 },
-    _7: { name: "7", value: 7, countValue: 0 },
-    _8: { name: "8", value: 8, countValue: 0 },
-    _9: { name: "9", value: 9, countValue: 0 },
-    _10: { name: "10", value: 10, countValue: 0 },
-    _J: { name: "J", value: 10, countValue: 0 },
-    _Q: { name: "Q", value: 10, countValue: 0 },
-    _K: { name: "K", value: 10, countValue: 0 }
+    _a: { name: _cardNames.ace, value: 11, countValue: 0 },
+    _2: { name: _cardNames.two, value: 2, countValue: 0 },
+    _3: { name: _cardNames.three, value: 3, countValue: 0 },
+    _4: { name: _cardNames.four, value: 4, countValue: 0 },
+    _5: { name: _cardNames.five, value: 5, countValue: 0 },
+    _6: { name: _cardNames.six, value: 6, countValue: 0 },
+    _7: { name: _cardNames.seven, value: 7, countValue: 0 },
+    _8: { name: _cardNames.eight, value: 8, countValue: 0 },
+    _9: { name: _cardNames.nine, value: 9, countValue: 0 },
+    _10: { name: _cardNames.ten, value: 10, countValue: 0 },
+    _J: { name: _cardNames.jack, value: 10, countValue: 0 },
+    _Q: { name: _cardNames.queen, value: 10, countValue: 0 },
+    _K: { name: _cardNames.king, value: 10, countValue: 0 }
 };
 
 var _hand_types = {
@@ -104,7 +124,7 @@ var Hand = (function (){
             var is_hand_Soft = this.is_soft(hand);
 
             function add(accumulator, newCard){
-                var cardValue = (is_hand_Soft && newCard.name == "A") ? 1 : newCard.value;
+                var cardValue = (is_hand_Soft && newCard.name == _cardNames.ace) ? _aceValue.soft : newCard.value;
                 return accumulator + cardValue;
             }
 
@@ -118,7 +138,7 @@ var Hand = (function (){
         },
 
         is_soft = function (hand) {
-            return hand.cards[0].name == "A" ? true : false;
+            return hand.cards[0].name == _cardNames.ace ? true : false;
         },
 
         should_split = function (hand) {
