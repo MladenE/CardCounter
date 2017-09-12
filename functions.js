@@ -64,7 +64,7 @@ var _aceValue = {
 }
 
 var _card = {
-    _a: { name: _cardNames.ace, value: 11, countValue: 0 },
+    _a: { name: _cardNames.ace, value: _aceValue.hard, countValue: 0 },
     _2: { name: _cardNames.two, value: 2, countValue: 0 },
     _3: { name: _cardNames.three, value: 3, countValue: 0 },
     _4: { name: _cardNames.four, value: 4, countValue: 0 },
