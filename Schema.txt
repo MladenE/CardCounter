@@ -1,0 +1,50 @@
+
+UI
+--
+- html pages with buttons etc
+
+
+CONTROLLERS
+-----------
+- jquery click functions
+- ajax calls to api
+
+- HouseCard
+- PlayerCard
+
+
+SERVICES (API)
+--------------
+- <service name>.<method>()
+  Hand.<>
+  Action.<>
+  GameState.<>
+
+
+DOMAIN (OBJECTS)
+----------------
+- enums
+  _actions
+  _outcome
+  _hand_types
+  _aceValue
+  _cardNames
+
+- models
+  _hand
+  _card
+
+- variables
+
+- collections
+  _hard
+  _soft
+  _splits
+
+
+PERSISTANCE
+-----------
+- collections
+  _card_history
+  _shoe
+
