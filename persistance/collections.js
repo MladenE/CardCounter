@@ -1,5 +1,6 @@
 var collection = (function () {  
 
+    // Card
     var _cardHistory = [];
 
     var _addCard = function (newCard){
@@ -13,8 +14,8 @@ var collection = (function () {
             addCard = function(newCard){
                 this._addCard(newCard);
             }
-        }
-        ,
+        },
+        
         shoe : {}
     }
 })();
