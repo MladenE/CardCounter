@@ -1,0 +1,14 @@
+.cards td {
+    text-align: center;
+    padding:10px;
+}
+.percentages td {
+    text-align: center;
+    padding:10px;
+}
+button {
+    padding: 20px;
+    margin: 10px;
+    font-size: 40px;
+    font-weight: 500;
+}

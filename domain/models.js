@@ -31,6 +31,11 @@ var models = (function () {
             _J: { name: enums.cardNames.jack, value: 10, countValue: 0 },
             _Q: { name: enums.cardNames.queen, value: 10, countValue: 0 },
             _K: { name: enums.cardNames.king, value: 10, countValue: 0 }
+        },
+
+        dto : {
+            outcome: undefined,
+            action:  undefined
         }
     }
 })();

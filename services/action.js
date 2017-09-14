@@ -22,7 +22,7 @@ var Actions = (function (){
         },
 
         split_player_hand = function (playerHand) {
-            var split_hand = _hand.player.split.cards;
+            var split_hand = models.hand.player.split.cards;
             split_hand = []; // reset split hand
             split_hand.push(playerHand.cards.pop());
         }

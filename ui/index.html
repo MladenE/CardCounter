@@ -1,0 +1,117 @@
+<html>
+    
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    
+    <body>
+        <div id="house">
+            <h2>House</h2>
+            <h3 id="houseHand"></h3>
+            <button name="card" data-param-val="11" data-param-count="-1">A</button>
+            <button name="card" data-param-val="2" data-param-count="1">2</button>
+            <button name="card" data-param-val="3" data-param-count="1">3</button>
+            <button name="card" data-param-val="4" data-param-count="1">4</button>
+            <button name="card" data-param-val="5" data-param-count="1">5</button>
+            <button name="card" data-param-val="6" data-param-count="1">6</button>
+            <button name="card" data-param-val="7" data-param-count="0">7</button>
+            <button name="card" data-param-val="8" data-param-count="0">8</button>
+            <button name="card" data-param-val="9" data-param-count="0">9</button>
+            <button name="card" data-param-val="10" data-param-count="-1">10</button>
+            <button name="card" data-param-val="10" data-param-count="-1">J</button>
+            <button name="card" data-param-val="10" data-param-count="-1">Q</button>
+            <button name="card" data-param-val="10" data-param-count="-1">K</button>
+        </div>
+    <br/>
+    <br/>
+        <div id="playerHand">
+            <h2>Player</h2>
+            <h3 id="playerPrimaryHand"></h3>
+            <button name="card" data-param-val="11" data-param-count="-1">A</button>
+            <button name="card" data-param-val="2" data-param-count="1">2</button>
+            <button name="card" data-param-val="3" data-param-count="1">3</button>
+            <button name="card" data-param-val="4" data-param-count="1">4</button>
+            <button name="card" data-param-val="5" data-param-count="1">5</button>
+            <button name="card" data-param-val="6" data-param-count="1">6</button>
+            <button name="card" data-param-val="7" data-param-count="0">7</button>
+            <button name="card" data-param-val="8" data-param-count="0">8</button>
+            <button name="card" data-param-val="9" data-param-count="0">9</button>
+            <button name="card" data-param-val="10" data-param-count="-1">10</button>
+            <button name="card" data-param-val="10" data-param-count="-1">J</button>
+            <button name="card" data-param-val="10" data-param-count="-1">Q</button>
+            <button name="card" data-param-val="10" data-param-count="-1">K</button>
+            <br />
+            <button id="split" style="display:none">Split</button>
+        </div>
+    <br/>
+    <br/>
+        <div id="splitHand" style="display:none">
+            <h2>Split hand</h2>
+            <h3 id="playerSplitHand"></h3>
+            <button name="card" data-param-val="11" data-param-count="-1">A</button>
+            <button name="card" data-param-val="2" data-param-count="1">2</button>
+            <button name="card" data-param-val="3" data-param-count="1">3</button>
+            <button name="card" data-param-val="4" data-param-count="1">4</button>
+            <button name="card" data-param-val="5" data-param-count="1">5</button>
+            <button name="card" data-param-val="6" data-param-count="1">6</button>
+            <button name="card" data-param-val="7" data-param-count="0">7</button>
+            <button name="card" data-param-val="8" data-param-count="0">8</button>
+            <button name="card" data-param-val="9" data-param-count="0">9</button>
+            <button name="card" data-param-val="10" data-param-count="-1">10</button>
+            <button name="card" data-param-val="10" data-param-count="-1">J</button>
+            <button name="card" data-param-val="10" data-param-count="-1">Q</button>
+            <button name="card" data-param-val="10" data-param-count="-1">K</button>   
+        </div>
+        <br />
+        <br />
+        <p>Running count: <span id="runningCount"></span></p>
+        <p>True count: <span id="trueCount"></span> <span id="calc"></span></p>
+        <p>Action: <span id="action"></span></p>
+        <div>
+            <table class="cards">
+                <tr>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>J</td>
+                    <td>Q</td>
+                    <td>K</td>
+                    <td>A</td>
+                </tr>
+                <tr>
+                    <td id="p2"></td>
+                    <td id="p3"></td>
+                    <td id="p4"></td>
+                    <td id="p5"></td>
+                    <td id="p6"></td>
+                    <td id="p7"></td>
+                    <td id="p8"></td>
+                    <td id="p9"></td>
+                    <td id="p10"></td>
+                    <td id="pJ"></td>
+                    <td id="pQ"></td>
+                    <td id="pK"></td>
+                    <td id="pA"></td>
+                </tr>
+                <tr>
+                    <td id="ps26" colspan="5" style="text-align:center; background-color:aquamarine;">0</td>
+                    <td id="ps79" colspan="3" style="text-align:center; background-color:bisque;">0</td>
+                    <td id="ps10A" colspan="5" style="text-align:center; background-color:darkgray;">0</td>
+                </tr>
+                <tr>
+                    <td id="pTotal" colspan="13" style="text-align:center;"></td>
+                </tr>
+            </table>
+        </div>
+        <button id="reset">Reset</button>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src=""></script>
+    <script src=""></script>
+    <script src=""></script>

@@ -5,7 +5,7 @@ var Hand = (function (){
             var is_hand_Soft = this.is_soft(hand);
 
             function add(accumulator, newCard){
-                var cardValue = (is_hand_Soft && newCard.name == _cardNames.ace) ? _aceValue.soft : newCard.value;
+                var cardValue = (is_hand_Soft && newCard.name == enums.cardNames.ace) ? enums.aceValue.soft : newCard.value;
                 return accumulator + cardValue;
             }
 
@@ -19,7 +19,7 @@ var Hand = (function (){
         },
 
         is_soft = function (hand) {
-            return hand.cards[0].name == _cardNames.ace ? true : false;
+            return hand.cards[0].name == enums.cardNames.ace ? true : false;
         },
 
         should_split = function (hand) {
@@ -27,7 +27,7 @@ var Hand = (function (){
                 first_card = hand.cards[0].value,
                 second_card = hand.cards[1].value
 
-            if (hand.type == _hand_types.primary && number_of_cards == 2 && (first_card == second_card)){
+            if (hand.type == enums.hand_types.primary && number_of_cards == 2 && (first_card == second_card)){
                 // check actions for split
                 return ;
             } else {
