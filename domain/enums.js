@@ -2,10 +2,13 @@ var enums = (function () {
 
     return {
         actions : {
-            hit: "hit",
-            split: "split",
-            stand: "stand",
-            double: "double"
+            stand: "Stand",
+            hit: "Hit",
+            split: "Split",
+            splitHit: "Split if double after split is allowed, otherwise hit.",
+            doubleHit: "Double if allowed, otherwise hit.",
+            doubleStand: "Double if allowed, otherwise stand.",
+            surrenderHit: "Surrender if allowed, otherwise hit.",
         },        
         
         outcome : {

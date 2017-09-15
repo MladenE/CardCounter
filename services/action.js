@@ -9,7 +9,7 @@ var Actions = (function (){
 
         },
 
-        get_split = function (playerHand) {
+        get_split = function (playerHand, houseHand) {
             
         },
 

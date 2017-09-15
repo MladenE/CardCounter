@@ -4,7 +4,6 @@ function HouseCard(newCard, hand) {
     GameState.update_Count(newCard);
     GameState.update_Remaining_Cards_In_Shoe(newCard);
 
-
 // loop through the players hands
 // - check if split hand exists before doing logic
     

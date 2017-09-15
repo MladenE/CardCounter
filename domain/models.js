@@ -1,6 +1,7 @@
 var models = (function () {
 
     return {
+        // The hands of cards as they appear on the casino table
         hand : {
             house: {
                 type: enums.hand_types.house,
@@ -33,9 +34,11 @@ var models = (function () {
             _K: { name: enums.cardNames.king, value: 10, countValue: 0 }
         },
 
+        // Object to pass back from the controllers
         dto : {
-            outcome: undefined,
-            action:  undefined
+            outcome: undefined, // WIN | LOSE | DRAW | undefined
+            action:  undefined, // hit | split | stand | double | undefined
+            message: undefined  // Message from collection.<hard | soft | split> | undefined
         }
     }
 })();

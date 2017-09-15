@@ -1,12 +1,13 @@
 var collection = (function () {
     
-    var h  = "Hit",
-        s  = "Stand",
-        dh = "Double if allowed, otherwise hit",
-        ds = "Double if allowed, otherwise stand",
-        p  = "Split",
-        ph = "Split if double after split is allowed, otherwise hit",
-        rh = "Surrender if allowed, otherwise hit."
+    // ALL actions are contained in these tables.
+    var h  = enums.actions.hit,
+        s  = enums.actions.stand,
+        dh = enums.actions.doubleHit,
+        ds = enums.actions.doubleStand,
+        p  = enums.actions.split,
+        ph = enums.actions.splitHit,
+        rh = enums.actions.surrenderHit
 
     return {
         hard : {
@@ -32,7 +33,7 @@ var collection = (function () {
             "19": [s,s,s,s,s,s,s,s,s,s]
         },
     
-        splits : {
+        split : {
             "22":   [ph,ph,p,p,p,p,h,h,h,h],
             "33":   [ph,ph,p,p,p,p,h,h,h,h],
             "44":   [h,h,h,ph,ph,h,h,h,h,h],

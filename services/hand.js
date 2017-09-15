@@ -28,8 +28,12 @@ var Hand = (function (){
                 second_card = hand.cards[1].value
 
             if (hand.type == enums.hand_types.primary && number_of_cards == 2 && (first_card == second_card)){
-                // check actions for split
-                return ;
+                // Hand can be split
+                // Check actions for split. i.e 55 should not be split.
+                var split_key = first_card + second_card;
+                var house_index = undefined; // get the index for the house card.
+                collection.split[split_key][]
+                return Actions.get_split(); // Get the value from actions
             } else {
                 return false;
             }
