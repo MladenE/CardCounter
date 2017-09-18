@@ -4,16 +4,19 @@ function PlayerCard(newCard, hand){
     GameState.update_Count(newCard);
     GameState.update_Remaining_Cards_In_Shoe(newCard);
 
+    // Create a clean noe dto
+    var dto = Object.create(models.dto);
+
     if (hand.cards.length >= 2) {        
         if (Hand.value_of_hand(hand) == 21) {
-            models.dto.action = enums.actions.stand;
+            dto.action = enums.actions.stand;
             // Wait for house card
         } else {
             if (Hand.is_bust(hand)) { // !!! must do is_soft check
-                models.dto.outcome = enums.outcome.lose;
+                dto.outcome = enums.outcome.lose;
             } else {
                 if (Hand.should_split(hand)) {
-                    models.dto.action = enums.actions.split;
+                    dto.action = enums.actions.split;
                 } else {                   
 
                     var basicForm = Hand.is_soft(hand) ? Actions.get_Soft() : Actions.get_Hard();
@@ -24,11 +27,11 @@ function PlayerCard(newCard, hand){
 
                     var action = extendedForm == false ? basicForm : extendedForm;
 
-                    models.dto.action = action;
+                    dto.action = action;
                 }
             }
         }
     }
     // send dto to UI
-    return models.dto;
+    return dto;
 }

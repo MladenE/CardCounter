@@ -9,6 +9,7 @@ var enums = (function () {
             doubleHit: "Double if allowed, otherwise hit.",
             doubleStand: "Double if allowed, otherwise stand.",
             surrenderHit: "Surrender if allowed, otherwise hit.",
+            doNothing: "Do nothing. House will take another card."
         },        
         
         outcome : {

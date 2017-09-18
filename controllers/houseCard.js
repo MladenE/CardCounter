@@ -11,24 +11,28 @@ function HouseCard(newCard, hand) {
     // ! When playing the house cards I don't know whether to use the player's primary or split hand.
     var player_hand_value = Hand.value_of_hand(models.hand.player);
 
+    // Create clean new dto
+    var dto = Object.create(models.dto);
+
     if (house_hand_value < player_hand_value) {
         if (house_hand_value < 17) {
             // Do nothing. House will take another card.
+            dto.action = emums.actions.doNothing;
         } else {
             if (house_hand_value = player_hand_value) {
-                models.dto.outcome = enums.outcome.draw;
+                dto.outcome = enums.outcome.draw;
             } else {
-                models.dto.outcome = enums.outcome.win;
+                dto.outcome = enums.outcome.win;
             }
         }
     } else {
         if (Hand.is_bust(hand)) {
-            models.dto.outcome = enums.outcome.win;
+            dto.outcome = enums.outcome.win;
         } else {
-            models.dto.outcome = enums.outcome.lose;
+            dto.outcome = enums.outcome.lose;
         }
     }
     // send dto to UI
-    return models.dto;
+    return dto;
 
 }
