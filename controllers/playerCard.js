@@ -1,29 +1,29 @@
 
-function PlayerCard(newCard, hand){
+function PlayerCard(newCard, playerHand, houseHand){
 
     GameState.update_Count(newCard);
     GameState.update_Remaining_Cards_In_Shoe(newCard);
 
-    // Create a clean noe dto
+    // Create a clean new dto
     var dto = Object.create(models.dto);
 
-    if (hand.cards.length >= 2) {        
-        if (Hand.value_of_hand(hand) == 21) {
+    if (playerHand.cards.length >= 2) {        
+        if (Hand.value_of_hand(playerHand) == 21) {
             dto.action = enums.actions.stand;
             // Wait for house card
         } else {
-            if (Hand.is_bust(hand)) { // !!! must do is_soft check
+            if (Hand.is_bust(playerHand)) { // !!! must do is_soft check
                 dto.outcome = enums.outcome.lose;
             } else {
-                if (Hand.should_split(hand)) {
+                if (Hand.should_split(playerHand)) {
                     dto.action = enums.actions.split;
                 } else {                   
 
-                    var basicForm = Hand.is_soft(hand) ? Actions.get_Soft() : Actions.get_Hard();
+                    var basicForm = Hand.is_soft(playerHand) ? Actions.get_Soft(playerHand, houseHand) : Actions.get_Hard(playerHand, houseHand);
                                         
-                    var i20 = Actions.get_I20(hand);
+                    var i20 = Actions.get_I20(playerHand, houseHand);
 
-                    var extendedForm = i20 == false ? Actions.get_F4(hand) : i20;
+                    var extendedForm = i20 == false ? Actions.get_F4(playerHand, houseHand) : i20;
 
                     var action = extendedForm == false ? basicForm : extendedForm;
 

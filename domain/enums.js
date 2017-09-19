@@ -43,6 +43,17 @@ var enums = (function () {
         aceValue : {
             hard: 11,
             soft: 1
+        },
+
+        indexBounds : {
+            hard : {
+                lower : 8,
+                upper : 17
+            },
+            soft : {
+                lower : 13,
+                upper : 19
+            }
         }
     }
 
