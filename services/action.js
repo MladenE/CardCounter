@@ -21,6 +21,10 @@ var Actions = (function (){
         return houseHandValue - 2;
     }
 
+    var _is_index_in_collection = function (index, collection) {
+        return collection[index] === undefined ? false : true;
+    }
+
     return {
         get_Soft = function (playerHand, houseHand){
             // This is all happy path! Add error catching.
@@ -51,7 +55,11 @@ var Actions = (function (){
         },
 
         get_split = function (playerHand, houseHand){
-            
+            var _split_key = playerHand.cards[0].value + playerHand.cards[1].value
+            var _houseHandValue = Hand.value_of_hand(houseHand);        
+            var _house_index = _get_house_array_index(_houseHandValue)
+
+            return collection.split[_split_key][_house_index];
         },
 
         get_I20 = function (playerHand, houseHand){
