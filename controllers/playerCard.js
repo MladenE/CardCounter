@@ -15,8 +15,10 @@ function PlayerCard(newCard, playerHand, houseHand){
             if (Hand.is_bust(playerHand)) { // !!! must do is_soft check
                 dto.outcome = enums.outcome.lose;
             } else {
-                if (Hand.should_split(playerHand)) {
-                    dto.action = enums.actions.split;
+                var splitAction = Hand.has_pair(playerHand) ? Actions.get_split(playerHand, houseHand) : undefined;
+
+                if (splitAction != undefined) {
+                    dto.action = splitAction;
                 } else {                   
 
                     var basicForm = Hand.is_soft(playerHand) ? Actions.get_Soft(playerHand, houseHand) : Actions.get_Hard(playerHand, houseHand);

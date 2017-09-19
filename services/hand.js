@@ -15,28 +15,19 @@ var Hand = (function (){
         },
 
         is_bust = function (hand) {
-            return (this.value_of_hand(hand) > 21) ? true : false;
+            return (this.value_of_hand(hand) > 21);
         },
 
         is_soft = function (hand) {
-            return hand.cards[0].name == enums.cardNames.ace ? true : false;
+            return (hand.cards[0].name == enums.cardNames.ace);
         },
 
-        should_split = function (hand) {
+        has_pair = function (hand) {
             var number_of_cards = hand.cards.length,
                 first_card = hand.cards[0].value,
                 second_card = hand.cards[1].value
 
-            if (hand.type == enums.hand_types.primary && number_of_cards == 2 && (first_card == second_card)){
-                // Hand can be split
-                // Check actions for split. i.e 55 should not be split.
-                var split_key = first_card + second_card;
-                var house_index = undefined; // get the index for the house card.
-                collection.split[split_key][]
-                return Actions.get_split(); // Get the value from actions
-            } else {
-                return false;
-            }
+            return (hand.type == enums.hand_types.primary && number_of_cards == 2 && (first_card == second_card));            
         },
 
         add_card = function (hand, card){

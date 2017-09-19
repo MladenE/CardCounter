@@ -1,9 +1,7 @@
 var Actions = (function (){
     
-    // put private functions here from basicForm.js _normalizePlayerHand, _convertHouseHandToArrayIndex etc.
-
     var _get_lower_bound = function (lowerValue, playerHandValue) {
-        return playerHandValue <= lowerValue13 ? lowerValue : playerHandValue;
+        return playerHandValue <= lowerValue ? lowerValue : playerHandValue;
     }
 
     var _get_upper_bound = function (upperValue, playerHandValue) {
@@ -11,7 +9,7 @@ var Actions = (function (){
     }
 
     var _get_player_index = function (lower, upper, playerHandValue) {
-        // formats the players hand value to between 13-19
+        // formats the players hand value to between the lower and upper bounds of the relevant hand type (hard | soft)
         var _playerHandValue = _get_lower_bound(lower, playerHandValue);
             _playerHandValue = _get_upper_bound(upper, _playerHandValue);
         return _playerHandValue;
@@ -19,10 +17,6 @@ var Actions = (function (){
 
     var _get_house_array_index = function (houseHandValue) {
         return houseHandValue - 2;
-    }
-
-    var _is_index_in_collection = function (index, collection) {
-        return collection[index] === undefined ? false : true;
     }
 
     return {
@@ -55,9 +49,10 @@ var Actions = (function (){
         },
 
         get_split = function (playerHand, houseHand){
-            var _split_key = playerHand.cards[0].value + playerHand.cards[1].value
+            // 55 & 1010 should return undefined
+            var _split_key = playerHand.cards[0].value + playerHand.cards[1].value;
             var _houseHandValue = Hand.value_of_hand(houseHand);        
-            var _house_index = _get_house_array_index(_houseHandValue)
+            var _house_index = _get_house_array_index(_houseHandValue);
 
             return collection.split[_split_key][_house_index];
         },
