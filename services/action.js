@@ -31,7 +31,7 @@ var Actions = (function (){
             var _houseHandValue = Hand.value_of_hand(houseHand);
             var _houseHandIndex = _get_house_array_index(houseHandValue);
 
-            return collection.soft[_playerHandIndex][_houseHandIndex];
+            return Collection.soft[_playerHandIndex][_houseHandIndex];
         },
 
         get_Hard = function (playerHand, houseHand){
@@ -45,7 +45,7 @@ var Actions = (function (){
             var _houseHandValue = Hand.value_of_hand(houseHand);
             var _houseHandIndex = _get_house_array_index(houseHandValue);
 
-            return collection.hard[_playerHandIndex][_houseHandIndex];
+            return Collection.hard[_playerHandIndex][_houseHandIndex];
         },
 
         get_split = function (playerHand, houseHand){
@@ -54,7 +54,7 @@ var Actions = (function (){
             var _houseHandValue = Hand.value_of_hand(houseHand);        
             var _house_index = _get_house_array_index(_houseHandValue);
 
-            return collection.split[_split_key][_house_index];
+            return Collection.split[_split_key][_house_index];
         },
 
         get_I20 = function (playerHand, houseHand){

@@ -1,4 +1,4 @@
-var collection = (function () {
+var Collection = (function () {
     
     // ALL actions are contained in these tables.
     var h  = enums.actions.hit,

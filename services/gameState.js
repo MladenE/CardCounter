@@ -3,7 +3,7 @@ var GameState = (function () {
     return {
         update_Count = function (card){
             // add count values to an array
-            collection.card_history.push(card);
+            Persistance.card_history.push(card);
         },
 
         update_Remaining_Cards_In_Shoe = function (card){
@@ -13,12 +13,12 @@ var GameState = (function () {
 
         get_trueCount = function (){
             // get average of _count
-            var sum = collection.card_history.reduce(
+            var sum = Persistance.card_history.reduce(
                 function(accumulator, card)
                 {
                     accumulator + card.countValue
                 }, 0);
-            var trueCount = sum / collection.card_history.length;
+            var trueCount = sum / Persistance.card_history.length;
             return trueCount;
         }
     }
