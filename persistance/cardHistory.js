@@ -1,4 +1,5 @@
-var collection = (function () {  
+var CardHistory = (function () {  
+    // Data that would be written to a persistance layer.
 
     // Card
     var _cardHistory = [];
@@ -7,15 +8,12 @@ var collection = (function () {
         _cardHistory.push(newCard);
     }
 
-    var _shoe = {};
-
     return {
         card_history : {
-            addCard = function(newCard){
+            addCard = function(newCard) {
                 this._addCard(newCard);
             }
-        },
+        }
         
-        shoe : {}
     }
 })();
