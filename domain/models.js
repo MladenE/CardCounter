@@ -1,8 +1,7 @@
-var models = (function () {
+var models = (function (DomainNameSpace) {
 
-    return {
-        // The hands of cards as they appear on the casino table
-        hand : {
+    // The hands of cards as they appear on the casino table
+    var _hand = {
             house: {
                 type: enums.hand_types.house,
                 cards: []},
@@ -16,9 +15,10 @@ var models = (function () {
                         type: enums.hand_types.split,
                         cards: []}
             }
-        },
+        };
 
-        card : {
+    // What is this. It isn't the shoe! Should the countValues all be 0?
+    var _card = {
             _a: { name: enums.cardNames.ace, value: enums.aceValue.hard, countValue: 0 },
             _2: { name: enums.cardNames.two, value: 2, countValue: 0 },
             _3: { name: enums.cardNames.three, value: 3, countValue: 0 },
@@ -32,13 +32,21 @@ var models = (function () {
             _J: { name: enums.cardNames.jack, value: 10, countValue: 0 },
             _Q: { name: enums.cardNames.queen, value: 10, countValue: 0 },
             _K: { name: enums.cardNames.king, value: 10, countValue: 0 }
-        },
+        };
 
-        // Object to pass back from the controllers
-        dto : {
+    // Object to pass back from the controllers
+    var _dto = {
             outcome: undefined, // WIN | LOSE | DRAW | undefined
             action:  undefined, // hit | split | stand | double | undefined
             message: undefined  // Message from collection.<hard | soft | split> | undefined
-        }
-    }
-})();
+        };    
+
+    var public = {};
+        public.hand = _hand;
+        public.card = _card;
+        public.dto  = _dto;
+
+    DomainNameSpace.Models = public;
+    return DomainNameSpace;
+
+});

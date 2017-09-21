@@ -1,4 +1,4 @@
-var Collection = (function () {
+var Collection = (function (DomainNameSpace) {
     
     // ALL actions are contained in these tables.
     var h  = enums.actions.hit,
@@ -9,8 +9,7 @@ var Collection = (function () {
         ph = enums.actions.splitHit,
         rh = enums.actions.surrenderHit
 
-    return {
-        hard : {
+    var _hard = {
             "8":  [h,h,h,h,h,h,h,h,h,h],
             "9":  [h,dh,dh,dh,dh,h,h,h,h,h],
             "10": [dh,dh,dh,dh,dh,dh,dh,dh,h,h],
@@ -21,9 +20,9 @@ var Collection = (function () {
             "15": [s,s,s,s,s,h,h,h,rh,h],
             "16": [s,s,s,s,s,h,h,rh,rh,rh],
             "17": [s,s,s,s,s,s,s,s,s,s]
-        },
-    
-        soft : {
+        };
+
+    var _soft = {
             "13": [h,h,h,dh,dh,h,h,h,h,h],
             "14": [h,h,h,dh,dh,h,h,h,h,h],
             "15": [h,h,dh,dh,dh,h,h,h,h,h],
@@ -31,9 +30,9 @@ var Collection = (function () {
             "17": [h,dh,dh,dh,dh,h,h,h,h,h],
             "18": [s,ds,ds,ds,ds,s,s,h,h,h],
             "19": [s,s,s,s,s,s,s,s,s,s]
-        },
-    
-        split : {
+        };
+
+    var _split = {
             "22":   [ph,ph,p,p,p,p,h,h,h,h],
             "33":   [ph,ph,p,p,p,p,h,h,h,h],
             "44":   [h,h,h,ph,ph,h,h,h,h,h],
@@ -42,7 +41,14 @@ var Collection = (function () {
             "88":   [p,p,p,p,p,p,p,p,p,p],
             "99":   [p,p,p,p,p,s,p,p,s,s],
             "1111": [p,p,p,p,p,p,p,p,p,p]
-        }
-    }
+        };
+    
+    var public = {};
+        public.hard  = _hard;
+        public.soft  = _soft;
+        public.split = _split;
 
-})();
+    DomainNameSpace.Collection = public;
+    return DomainNameSpace;
+
+});
