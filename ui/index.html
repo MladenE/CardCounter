@@ -67,6 +67,8 @@
         <p>Running count: <span id="runningCount"></span></p>
         <p>True count: <span id="trueCount"></span> <span id="calc"></span></p>
         <p>Action: <span id="action"></span></p>
+        <p>Message: <span id="message"></span></p>
+        <p>Outcome: <span id="outcome"></span></p>
         <div>
             <table class="cards">
                 <tr>
@@ -112,6 +114,20 @@
         <button id="reset">Reset</button>
     </body>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src=""></script>
-    <script src=""></script>
-    <script src=""></script>
+    
+    <script src="../persistance/shoe.js"></script>
+    <script src="../persistance/cardHistory.js"></script>
+
+    <script src="../domain/collections.js"></script>
+    <script src="../domain/enums.js"></script>
+    <script src="../domain/models.js"></script>    
+    
+    <script src="../services/action.js"></script>
+    <script src="../services/gameState.js"></script>
+    <script src="../services/hand.js"></script>
+    
+    <script src="../controllers/houseCard.js"></script>
+    <script src="../controllers/playerCard.js"></script>
+    
+    <script src="namespaces.js"></script>
+    <script src="eventHandlers.js"></script>
