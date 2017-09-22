@@ -1,5 +1,4 @@
-var CardHistory = (function () {  
-    // Data that would be written to a persistance layer.
+var CardHistory = (function (PersistanceNameSpace) {  
 
     // Card
     var _cardHistory = [];
@@ -8,12 +7,10 @@ var CardHistory = (function () {
         _cardHistory.push(newCard);
     }
 
-    return {
-        card_history : {
-            addCard = function(newCard) {
-                this._addCard(newCard);
-            }
-        }
-        
-    }
-})();
+    var public = {};
+        public.add_card = _addCard;
+
+    PersistanceNameSpace.CardHistory = public;
+    return PersistanceNameSpace;
+
+});

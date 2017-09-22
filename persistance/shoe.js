@@ -1,12 +1,14 @@
-var Shoe = (function () {  
-    // Data that would be written to a persistance layer.
+var Shoe = (function (PersistanceNameSpace) {  
 
-    var _shoe = [];
+    var _shoe = {};
 
-    return {
-        
-        shoe : {}
+    var _remove_card = function () {    };
+    var _reset = function () {  };
 
-    }
+    var public = {};
+        public;
+
+    PersistanceNameSpace.Shoe = public;
+    return PersistanceNameSpace;
     
-})();
+});
