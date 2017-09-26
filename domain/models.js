@@ -1,4 +1,4 @@
-var models = (function (DomainNameSpace) {
+var Models = (function (DomainNameSpace) {
 
     // The hands of cards as they appear on the casino table
     var _hand = {
