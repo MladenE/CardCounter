@@ -1,28 +1,49 @@
 
 var PlayerCard = (function (ControllerNameSpace) {
 
-    var _play = function (newCard, playerHand, houseHand) {
-            
-        GameState.update_Count(newCard);
-        GameState.update_Remaining_Cards_In_Shoe(newCard);
-
+    var _play = function (newCardName, isPrimaryHand) {
+                    
         // Create a clean new dto
         var dto = Object.create(models.dto);
 
+        // Get card object from card name (newCard)
+        var newCard = Domain.Models.card; // Search for card with name
+
+        // Get hands here. The UI can't get them for us!
+        // get player hand
+        var playerHand = isPrimaryHand
+                         ? Domain.Models.hand.player.primary
+                         : Domain.Models.hand.player.split;
+
+        // get house hand
+        var houseHand = Domain.Models.hand.house;
+
+        // If player and house hands exist
+        GameState.update_Count(newCard);
+        GameState.update_Remaining_Cards_In_Shoe(newCard);
+
+        // Add card to playerHand
+        Services.Hand.add_card(playerHand, newCard);
+
+
+
+        // ----------- Put code below this line into a service call -----------
         if (playerHand.cards.length >= 2) {        
-            if (Hand.value_of_hand(playerHand) == 21) {
+            if (Services.Hand.value_of_hand(playerHand) == 21) {
 
                 dto.action = Enums.actions.stand;
                 dto.message = "Wait for house card.";
 
-            } else if (Hand.is_bust(playerHand)) {
+            } else if (Services.Hand.is_bust(playerHand)) {
 
                 dto.outcome = Enums.outcome.lose;
                 dto.message = "Bust";
 
             } else {
 
-                var splitAction = Hand.has_pair(playerHand) ? Actions.get_split(playerHand, houseHand) : undefined;
+                var splitAction = Services.Hand.has_pair(playerHand)
+                                    ? Actions.get_split(playerHand, houseHand)
+                                    : undefined;
 
                 if (splitAction != undefined) {
 
@@ -30,13 +51,19 @@ var PlayerCard = (function (ControllerNameSpace) {
 
                 } else {             
 
-                    var basicForm = Hand.is_soft(playerHand) ? Actions.get_Soft(playerHand, houseHand) : Actions.get_Hard(playerHand, houseHand);
+                    var basicForm = Services.Hand.is_soft(playerHand)
+                                    ? Services.Actions.get_Soft(playerHand, houseHand)
+                                    : Services.Actions.get_Hard(playerHand, houseHand);
                                         
-                    var i20 = Actions.get_I20(playerHand, houseHand);
+                    var i20 = Services.Actions.get_I20(playerHand, houseHand);
 
-                    var extendedForm = i20 == false ? Actions.get_F4(playerHand, houseHand) : i20;
+                    var extendedForm = i20 == undefined
+                                        ? Services.Actions.get_F4(playerHand, houseHand)
+                                        : i20;
 
-                    var action = extendedForm == false ? basicForm : extendedForm;
+                    var action = extendedForm == undefined
+                                    ? basicForm
+                                    : extendedForm;
 
                     dto.action = action;
                 }
