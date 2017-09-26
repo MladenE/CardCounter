@@ -14,8 +14,8 @@ $("#playerHand button[name='card']").on('click', function (e) {
     var cardValue = parseInt($(e.currentTarget).attr('data-param-val'));
     var cardCount = parseInt($(e.currentTarget).attr('data-param-count'));
     var cardName = $(e.currentTarget).text();
-    
-    //updatePlayerHand(_game.player.primaryHand, cardValue, cardName, cardCount);
+        
+    Controllers.PlayerCard.play(cardName, true); // true = isPrimaryHand
 });
 
 $("#splitHand button[name='card']").on('click', function (e) {
@@ -23,7 +23,7 @@ $("#splitHand button[name='card']").on('click', function (e) {
     var cardCount = parseInt($(e.currentTarget).attr('data-param-count'));
     var cardName = $(e.currentTarget).text();
     
-    //updatePlayerHand(_game.player.splitHand, cardValue, cardName, cardCount);
+    Controllers.PlayerCard.play(cardName, false); // false = isPrimaryHand
 });
 
 $("#playerHand #split").on('click', function (e) {
