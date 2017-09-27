@@ -6,8 +6,13 @@ var PlayerCard = (function (ControllerNameSpace) {
         // Create a clean new dto
         var dto = Object.create(models.dto);
 
-        // Get card object from card name (newCard)
-        var newCard = Domain.Models.card; // Search for card with name
+        // Get card object from newCardName
+        // Won't work! newCardName == "A", object card name == "ace"
+        // Use new id field in _card
+        var newCard = Domain.Collection.card.reduce(
+                            function(prev, curr) {
+                                return (curr.name == newCardName) ? curr : prev; 
+                            }, undefined);
 
         // Get hands here. The UI can't get them for us!
         // get player hand
