@@ -8,6 +8,10 @@
         <div id="house">
             <h2>House</h2>
             <h3 id="houseHand"></h3>
+            <!-- 
+                Add id field from _card
+                Dynamically add these buttons from the _card array
+            -->
             <button name="card">A</button>
             <button name="card">2</button>
             <button name="card">3</button>
@@ -48,19 +52,19 @@
         <div id="splitHand" style="display:none">
             <h2>Split hand</h2>
             <h3 id="playerSplitHand"></h3>
-            <button name="card" data-param-count="-1">A</button>
-            <button name="card" data-param-count="1">2</button>
-            <button name="card" data-param-count="1">3</button>
-            <button name="card" data-param-count="1">4</button>
-            <button name="card" data-param-count="1">5</button>
-            <button name="card" data-param-count="1">6</button>
-            <button name="card" data-param-count="0">7</button>
-            <button name="card" data-param-count="0">8</button>
-            <button name="card" data-param-count="0">9</button>
-            <button name="card" data-param-count="-1">10</button>
-            <button name="card" data-param-count="-1">J</button>
-            <button name="card" data-param-count="-1">Q</button>
-            <button name="card" data-param-count="-1">K</button>   
+            <button name="card">A</button>
+            <button name="card">2</button>
+            <button name="card">3</button>
+            <button name="card">4</button>
+            <button name="card">5</button>
+            <button name="card">6</button>
+            <button name="card">7</button>
+            <button name="card">8</button>
+            <button name="card">9</button>
+            <button name="card">10</button>
+            <button name="card">J</button>
+            <button name="card">Q</button>
+            <button name="card">K</button>   
         </div>
         <br />
         <br />
@@ -129,5 +133,5 @@
     <script src="../controllers/houseCard.js"></script>
     <script src="../controllers/playerCard.js"></script>
     
-    <script src="namespaces.js"></script>
+    <script src="../main/namespaces.js"></script>
     <script src="eventHandlers.js"></script>
