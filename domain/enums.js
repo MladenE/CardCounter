@@ -12,37 +12,43 @@ var Enums = (function (DomainNameSpace) {
     };      
     
     var _outcome = {
-        win: "WIN",
+        win:  "WIN",
         lose: "LOSE",
         draw: "DRAW"
     };
 
     var _hand_types = {
-        house: "house",
+        house:   "house",
         primary: "primary",
-        split: "split"
+        split:   "split"
     };
 
     var _cardNames = {
-        ace: "ace",
-        two: "two",
+        ace:   "ace",
+        two:   "two",
         three: "three",
-        four: "four",
-        five: "five",
-        six: "six",
+        four:  "four",
+        five:  "five",
+        six:   "six",
         seven: "seven",
         eight: "eight",
-        nine: "nine",
-        ten: "ten",
-        jack: "jack",
+        nine:  "nine",
+        ten:   "ten",
+        jack:  "jack",
         queen: "queen",
-        king: "king"
+        king:  "king"
     };
     
     var _aceValue = {
         hard: 11,
         soft: 1
     };
+
+    var _countValue = {
+        minusOne: -1,
+        zero:      0,
+        plusOne:   1
+    }
 
     var _indexBounds = {
         hard : {
@@ -61,7 +67,8 @@ var Enums = (function (DomainNameSpace) {
         public.hand_types = _hand_types;
         public.cardNames = _cardNames;
         public.aceValue = _aceValue;
-        public.indexBounds = indexe
+        public.countValue = _countValues;
+        public.indexBounds = _indexBounds;
 
     DomainNameSpace.Enums = public;
     return DomainNameSpace;
