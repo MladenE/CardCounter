@@ -1,5 +1,24 @@
 var Collection = (function (DomainNameSpace) {
     
+
+    // Reference table to get card values from the cardName passed into the controller.
+    var _card = [
+        { id: 1,  name: enums.cardNames.ace,   countValue: enums.countValue.minusOne, value: enums.aceValue.hard },
+        { id: 2,  name: enums.cardNames.two,   countValue: enums.countValue.plusOne,  value: 2 },
+        { id: 3,  name: enums.cardNames.three, countValue: enums.countValue.plusOne,  value: 3 },
+        { id: 4,  name: enums.cardNames.four,  countValue: enums.countValue.plusOne,  value: 4 },
+        { id: 5,  name: enums.cardNames.five,  countValue: enums.countValue.plusOne,  value: 5 },
+        { id: 6,  name: enums.cardNames.six,   countValue: enums.countValue.plusOne,  value: 6 },
+        { id: 7,  name: enums.cardNames.seven, countValue: enums.countValue.zero,     value: 7 },
+        { id: 8,  name: enums.cardNames.eight, countValue: enums.countValue.zero,     value: 8 },
+        { id: 9,  name: enums.cardNames.nine,  countValue: enums.countValue.zero,     value: 9 },
+        { id: 10, name: enums.cardNames.ten,   countValue: enums.countValue.minusOne, value: 10 },
+        { id: 11, name: enums.cardNames.jack,  countValue: enums.countValue.minusOne, value: 10 },
+        { id: 12, name: enums.cardNames.queen, countValue: enums.countValue.minusOne, value: 10 },
+        { id: 13, name: enums.cardNames.king,  countValue: enums.countValue.minusOne, value: 10 }
+    ];
+        
+
     // ALL actions are contained in these tables.
     var h  = enums.actions.hit,
         s  = enums.actions.stand,
@@ -47,6 +66,7 @@ var Collection = (function (DomainNameSpace) {
         public.hard  = _hard;
         public.soft  = _soft;
         public.split = _split;
+        public.card  = _card;
 
     DomainNameSpace.Collection = public;
     return DomainNameSpace;
