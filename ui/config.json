@@ -1,0 +1,10 @@
+{
+    "playerName" : "",
+    "CasinoName" : "",
+    "GameName" : "",
+    "GameRules" : {
+        "StandOn" : "" // 17
+        // etc...
+    },
+    "ConnectionString" : ""
+}
