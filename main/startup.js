@@ -7,7 +7,7 @@ var Main = (function (ConfigFilePath) {
     var _config;
 
     var _parseConfigFile = function () {
-        // Check file exists first using Validations();
+        // Check file exists first using Validate();
         _config = JSON.parse(ConfigFilePath);
     };
 
