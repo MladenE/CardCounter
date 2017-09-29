@@ -1,7 +1,7 @@
 
 var PlayerCard = (function (ControllerNameSpace) {
 
-    var _play = function (newCardName, isPrimaryHand) {
+    var _play = function (newCardId, isPrimaryHand) {
                     
         // Create a clean new dto
         var dto = Object.create(models.dto);
@@ -11,7 +11,7 @@ var PlayerCard = (function (ControllerNameSpace) {
         // Use new id field in _card
         var newCard = Domain.Collection.card.reduce(
                             function(prev, curr) {
-                                return (curr.name == newCardName) ? curr : prev; 
+                                return (currid == newCardId) ? curr : prev; 
                             }, undefined);
 
         // Get hands here. The UI can't get them for us!
