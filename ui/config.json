@@ -1,10 +1,10 @@
 {
     "playerName" : "",
-    "CasinoName" : "",
-    "GameName" : "",
-    "GameRules" : {
-        "StandOn" : "" // 17
+    "casinoName" : "",
+    "gameName" : "",
+    "gameRules" : {
+        "standOn" : "" // 17
         // etc...
     },
-    "ConnectionString" : ""
+    "connectionString" : ""
 }
