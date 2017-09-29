@@ -14,6 +14,6 @@ var Game = (function (ControllerNameSpace) {
     //public.undoEvent = _undoEvent; // removes the last action. Gets data from cardHistory {hand, card} and reversed it.
     public.reset     = _reset;
 
-    ControllerNameSpace.HouseCard = public;
+    ControllerNameSpace.Game = public;
     return ControllerNameSpace;
 });
