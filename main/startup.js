@@ -4,14 +4,24 @@
 
 var Main = (function (ConfigFilePath) {
 
+    var _configFilePath = ConfigFilePath;
     var _config;
 
     var _parseConfigFile = function () {
-        // Check file exists first using Validate();
-        _config = JSON.parse(ConfigFilePath);
+        try{
+            _config = JSON.parse(_ConfigFilePath);
+            // validate _config values
+        } catch (e) {
+            alert("Config file failed JSON parse!");
+        }
     };
 
-    var _namespaces = function () {
+    var _init = function () {
+        var Integrity = {}
+            Validate(Integrity);
+
+        _parseConfigFile();
+
         var Persistance = {}
             CardHistory(Persistance);
             Shoe(Persistance);
@@ -29,11 +39,6 @@ var Main = (function (ConfigFilePath) {
         var Controllers = {};
             HouseCard(Controllers);
             PlayerCard(Controllers);
-    };
-
-    var _init = function () {
-        _parseConfigFile();
-        _namespaces();
     };
 
     _init();

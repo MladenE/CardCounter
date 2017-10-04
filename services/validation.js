@@ -1,4 +1,4 @@
-var Validate = (function (NameSpace) {
+var Validate = (function (IntegrityNameSpace) {
     // validations for checking config.json values
 
     var _string = function (input){
@@ -28,8 +28,9 @@ var Validate = (function (NameSpace) {
     var public = {};
     public.string   = _string;
     public.int      = _int;
+    public.uint     = _uint;
     public.url      = _url;
 
-    NameSpace.Validate = public;
-    return NameSpace;
+    IntegrityNameSpace.Validate = public;
+    return IntegrityNameSpace;
 });
