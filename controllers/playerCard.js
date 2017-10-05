@@ -11,7 +11,7 @@ var PlayerCard = (function (ControllerNameSpace) {
         // Use new id field in _card
         var newCard = Domain.Collection.card.reduce(
                             function(prev, curr) {
-                                return (currid == newCardId) ? curr : prev; 
+                                return (curr.id == newCardId) ? curr : prev; 
                             }, undefined);
 
         // Get hands here. The UI can't get them for us!
