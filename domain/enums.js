@@ -48,7 +48,7 @@ var Enums = (function (DomainNameSpace) {
         minusOne: -1,
         zero:      0,
         plusOne:   1
-    }
+    };
 
     var _indexBounds = {
         hard : {
