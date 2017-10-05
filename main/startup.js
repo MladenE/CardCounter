@@ -8,11 +8,22 @@ var Main = (function (ConfigFilePath) {
     var _config;
 
     var _parseConfigFile = function () {
-        try{
-            _config = JSON.parse(_ConfigFilePath);
-            // validate _config values
-        } catch (e) {
-            alert("Config file failed JSON parse!");
+        try {
+            if (!JSON.parse(_ConfigFilePath)) {
+                throw "Cannot parse ConfigFile."
+            } else {
+                _config = JSON.parse(_ConfigFilePath);
+
+                // validate _config values
+                if (!Integrity.Validate.string(_config["playerName"].value))                throw "playerName is not a string.";
+                if (!Integrity.Validate.string(_config["casinoName"].value))                throw "casinoName is not a string.";
+                if (!Integrity.Validate.string(_config["gameName"].value))                  throw "gameName is not a string.";
+                if (!Integrity.Validate.uint(_config["gameRules"]["standOn"].value))        throw "gameRules.standOn is not an uint.";
+                if (!Integrity.Validate.uint(_config["gameRules"]["numberOfDecks"].value))  throw "gameRules.numberOfDecks is not an uint.";
+                if (!Integrity.Validate.url(_config["connectionString"].value))             throw "connectionString is not a valid url.";
+            }
+        } catch (err) {
+            alert("Config file failed JSON parse! \n " + err);
         }
     };
 
@@ -24,7 +35,7 @@ var Main = (function (ConfigFilePath) {
 
         var Persistance = {}
             CardHistory(Persistance);
-            Shoe(Persistance);
+            Shoe(Persistance, _config["gameRules"]["numberOfDecks"].value);
         
         var Domain = {};
             Eums(Domain);
@@ -39,9 +50,19 @@ var Main = (function (ConfigFilePath) {
         var Controllers = {};
             HouseCard(Controllers);
             PlayerCard(Controllers);
+
+        var public = {};
+            public.Config      = _config;
+            public.Integrity   = Integrity;
+            public.Persistance = Persistance;
+            public.Domain      = Domain;
+            public.Services    = Services;
+            public.Controllers = Controllers;
+
+        return public;
     };
 
-    _init();
+    return _init();
 
 })(ConfigFilePath);
 
