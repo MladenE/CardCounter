@@ -8,6 +8,7 @@ var GameState = (function (ServiceNameSpace) {
         var _update_Remaining_Cards_In_Shoe = function (card){
             // find cards by name
             // decrease count by 1
+            Persistance.Shoe.Remove_Card(card);
         };
 
         var _get_trueCount = function (){
