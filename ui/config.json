@@ -3,7 +3,8 @@
     "casinoName" : "",
     "gameName" : "",
     "gameRules" : {
-        "standOn" : "" // 17
+        "standOn" : "", // 17
+        "numberOfDecks"   : 6   // 6
         // etc...
     },
     "connectionString" : ""
