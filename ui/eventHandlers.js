@@ -7,7 +7,8 @@ $("#house button[name='card']").on('click', function (e) {
     //var cardCount = parseInt($(e.currentTarget).attr('data-param-count'));
     var cardName = $(e.currentTarget).text();
     
-    //updateHouseHand(_game.house, cardValue, cardName, cardCount);
+    Controllers.HouseCard.play(cardName);
+
 });
 
 $("#playerHand button[name='card']").on('click', function (e) {

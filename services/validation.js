@@ -23,8 +23,6 @@ var Validate = (function (IntegrityNameSpace) {
         return _re.test(input);
     };
 
-
-
     var public = {};
     public.string   = _string;
     public.int      = _int;

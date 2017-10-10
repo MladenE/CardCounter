@@ -23,6 +23,8 @@ var Enums = (function (DomainNameSpace) {
         split:   "split"
     };
 
+    var _numberOfSuits = 4;
+
     var _cardNames = {
         ace:   "ace",
         two:   "two",
@@ -39,6 +41,10 @@ var Enums = (function (DomainNameSpace) {
         king:  "king"
     };
     
+    var _twentyOne = 21;
+
+    var _minimumOf2CardsInAHand = 2;
+
     var _aceValue = {
         hard: 11,
         soft: 1
@@ -65,7 +71,10 @@ var Enums = (function (DomainNameSpace) {
         public.actions = _actions;
         public.outcome = _outcome;
         public.hand_types = _hand_types;
+        public.numberOfSuits = _numberOfSuits;
         public.cardNames = _cardNames;
+        public.twentyOne = _twentyOne;
+        public.minimumOf2CardsInAHand = _minimumOf2CardsInAHand;
         public.aceValue = _aceValue;
         public.countValue = _countValues;
         public.indexBounds = _indexBounds;
