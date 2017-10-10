@@ -2,9 +2,9 @@
 // Rename this to startApp.js
 // Acts like Main()
 
-var Main = (function (ConfigFilePath) {
+var Main = (function (global, ConfigFilePath) {
 
-    var _configFilePath = ConfigFilePath;
+    var _configFilePath = ConfigFilePath; // Where is this coming from? querystring??
     var _config;
 
     var _parseConfigFile = function () {
@@ -15,15 +15,15 @@ var Main = (function (ConfigFilePath) {
                 _config = JSON.parse(_ConfigFilePath);
 
                 // validate _config values
-                if (!Integrity.Validate.string(_config["playerName"].value))                throw "playerName is not a string.";
-                if (!Integrity.Validate.string(_config["casinoName"].value))                throw "casinoName is not a string.";
-                if (!Integrity.Validate.string(_config["gameName"].value))                  throw "gameName is not a string.";
-                if (!Integrity.Validate.uint(_config["gameRules"]["standOn"].value))        throw "gameRules.standOn is not an uint.";
-                if (!Integrity.Validate.uint(_config["gameRules"]["numberOfDecks"].value))  throw "gameRules.numberOfDecks is not an uint.";
-                if (!Integrity.Validate.url(_config["connectionString"].value))             throw "connectionString is not a valid url.";
+                if (!Integrity.Validate.string(_config.playerName))             throw "playerName is not a string.";
+                if (!Integrity.Validate.string(_config.casinoName))             throw "casinoName is not a string.";
+                if (!Integrity.Validate.string(_config.gameName))               throw "gameName is not a string.";
+                if (!Integrity.Validate.uint(_config.gameRules.standOn))        throw "gameRules.standOn is not an uint.";
+                if (!Integrity.Validate.uint(_config.gameRules.numberOfDecks))  throw "gameRules.numberOfDecks is not an uint.";
+                if (!Integrity.Validate.url(_config.connectionString))          throw "connectionString is not a valid url.";
             }
         } catch (err) {
-            alert("Config file failed JSON parse! \n " + err);
+            alert("Config file failed JSON parse! \n\n " + err);
         }
     };
 
@@ -35,7 +35,7 @@ var Main = (function (ConfigFilePath) {
 
         var Persistance = {}
             CardHistory(Persistance);
-            Shoe(Persistance, _config["gameRules"]["numberOfDecks"].value);
+            Shoe(Persistance);
         
         var Domain = {};
             Eums(Domain);
@@ -51,20 +51,19 @@ var Main = (function (ConfigFilePath) {
             HouseCard(Controllers);
             PlayerCard(Controllers);
 
-        var public = {};
-            public.Config      = _config;
-            public.Integrity   = Integrity;
-            public.Persistance = Persistance;
-            public.Domain      = Domain;
-            public.Services    = Services;
-            public.Controllers = Controllers;
+        global.Config      = _config;
+        global.Integrity   = Integrity;
+        global.Persistance = Persistance;
+        global.Domain      = Domain;
+        global.Services    = Services;
+        global.Controllers = Controllers;
 
-        return public;
+        return global; // Returns the global window with the namespaces
     };
 
     return _init();
 
-})(ConfigFilePath);
+})(window, ConfigFilePath);
 
 // Namespaces to attach modules to.
 // Order is important!
