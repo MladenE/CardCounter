@@ -6,9 +6,6 @@ var PlayerCard = (function (ControllerNameSpace) {
         // Create a clean new dto
         var dto = Object.create(models.dto);
 
-        // Get card object from newCardName
-        // Won't work! newCardName == "A", object card name == "ace"
-        // Use new id field in _card
         var newCard = Domain.Collection.card.reduce(
                             function(prev, curr) {
                                 return (curr.id == newCardId) ? curr : prev; 
@@ -33,8 +30,8 @@ var PlayerCard = (function (ControllerNameSpace) {
 
 
         // ----------- Put code below this line into a service call -----------
-        if (playerHand.cards.length >= 2) {        
-            if (Services.Hand.value_of_hand(playerHand) == 21) {
+        if (playerHand.cards.length >= Domain.Enums.minimumOf2CardsInAHand) {        
+            if (Services.Hand.value_of_hand(playerHand) == Domain.Enums.twentyOne) {
 
                 dto.action = Enums.actions.stand;
                 dto.message = "Wait for house card.";
@@ -84,7 +81,7 @@ var PlayerCard = (function (ControllerNameSpace) {
     var public = {};
         public.play = _play;
 
-    ControllerNameSpace.HouseCard = public;
+    ControllerNameSpace.PlayerCard = public;
     return ControllerNameSpace;
 
 });
