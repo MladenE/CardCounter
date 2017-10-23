@@ -1,8 +1,8 @@
+
 var Game = (function (ControllerNameSpace) {
 
     var _newGame = function () {
-        // 
-        // clear hands
+        // clear hands: Either house or player has won.
         Domain.Models.hand.house.cards = [];
         Domain.Models.hand.player.primary.cards = [];
         Domain.Models.hand.player.split.cards = [];
@@ -11,7 +11,7 @@ var Game = (function (ControllerNameSpace) {
     var _reset = function () {
         // clear everything: hands, shoe, cardHistory
         _newGame();
-        Persistance.Shoe.Init(Config.gameRules.numberOfDecks);
+        Persistance.Shoe.Init(Session.config.gameRules.numberOfDecks);
     };
 
     var public = {};

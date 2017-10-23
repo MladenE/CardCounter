@@ -5,13 +5,10 @@
     </head>
     
     <body>
-        <div id="house">
+        <div id="houseHand">
             <h2>House</h2>
-            <h3 id="houseHand"></h3>
-            <!-- 
-                Add id field from _card
-                Dynamically add these buttons from the _card array
-            -->
+            <h3 id="houseHandCards"></h3>
+            <!--
             <button name="card">A</button>
             <button name="card">2</button>
             <button name="card">3</button>
@@ -25,46 +22,20 @@
             <button name="card">J</button>
             <button name="card">Q</button>
             <button name="card">K</button>
+            -->
         </div>
     <br/>
     <br/>
         <div id="playerHand">
             <h2>Player</h2>
-            <h3 id="playerPrimaryHand"></h3>
-            <button name="card">A</button>
-            <button name="card">2</button>
-            <button name="card">3</button>
-            <button name="card">4</button>
-            <button name="card">5</button>
-            <button name="card">6</button>
-            <button name="card">7</button>
-            <button name="card">8</button>
-            <button name="card">9</button>
-            <button name="card">10</button>
-            <button name="card">J</button>
-            <button name="card">Q</button>
-            <button name="card">K</button>
-            <br />
+            <h3 id="playerPrimaryHandCards"></h3>
             <button id="split" style="display:none">Split</button>
         </div>
     <br/>
     <br/>
         <div id="splitHand" style="display:none">
             <h2>Split hand</h2>
-            <h3 id="playerSplitHand"></h3>
-            <button name="card">A</button>
-            <button name="card">2</button>
-            <button name="card">3</button>
-            <button name="card">4</button>
-            <button name="card">5</button>
-            <button name="card">6</button>
-            <button name="card">7</button>
-            <button name="card">8</button>
-            <button name="card">9</button>
-            <button name="card">10</button>
-            <button name="card">J</button>
-            <button name="card">Q</button>
-            <button name="card">K</button>   
+            <h3 id="playerSplitHandCards"></h3>
         </div>
         <br />
         <br />
@@ -129,9 +100,13 @@
     <script src="../services/action.js"></script>
     <script src="../services/gameState.js"></script>
     <script src="../services/hand.js"></script>
+    <script src="../services/validation.js"></script>
     
     <script src="../controllers/houseCard.js"></script>
     <script src="../controllers/playerCard.js"></script>
     
+    <script src="../main/config.js"></script>
     <script src="../main/startup.js"></script>
+
+    <script src="pageSetup.js"></script>
     <script src="eventHandlers.js"></script>

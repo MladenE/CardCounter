@@ -34,5 +34,5 @@ $("#playerHand #split").on('click', function (e) {
 });
 
 $("#reset").on('click', function() {
-
+    Controllers.Game.reset();
 });

@@ -1,4 +1,4 @@
-var CardHistory = (function (PersistanceNameSpace) {  
+var CardHistory = (function (RepositoryNameSpace) {  
 
     // Card
     var _cardHistory = [];
@@ -10,7 +10,7 @@ var CardHistory = (function (PersistanceNameSpace) {
     var public = {};
         public.add_card = _addCard;
 
-    PersistanceNameSpace.CardHistory = public;
-    return PersistanceNameSpace;
+        RepositoryNameSpace.CardHistory = public;
+    return RepositoryNameSpace;
 
 });

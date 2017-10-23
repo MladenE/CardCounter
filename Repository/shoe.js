@@ -1,21 +1,25 @@
 var Shoe = (function (PersistanceNameSpace) {  
 
+    /*
+     *  All this should be server side.
+     */
+
     var _full_value = undefined; 
 
     var _shoe = [
-        { id: 1,  name: enums.cardNames.ace,   count: _full_value }, 
-        { id: 2,  name: enums.cardNames.two,   count: _full_value },
-        { id: 3,  name: enums.cardNames.three, count: _full_value },
-        { id: 4,  name: enums.cardNames.four,  count: _full_value },
-        { id: 5,  name: enums.cardNames.five,  count: _full_value },
-        { id: 6,  name: enums.cardNames.six,   count: _full_value },
-        { id: 7,  name: enums.cardNames.seven, count: _full_value },
-        { id: 8,  name: enums.cardNames.eight, count: _full_value },
-        { id: 9,  name: enums.cardNames.nine,  count: _full_value },
-        { id: 10, name: enums.cardNames.ten,   count: _full_value },
-        { id: 11, name: enums.cardNames.jack,  count: _full_value },
-        { id: 12, name: enums.cardNames.queen, count: _full_value },
-        { id: 13, name: enums.cardNames.king,  count: _full_value }
+        { id: 1,  name: Domain.Enums.cardNames.ace,   count: _full_value }, 
+        { id: 2,  name: Domain.Enums.cardNames.two,   count: _full_value },
+        { id: 3,  name: Domain.Enums.cardNames.three, count: _full_value },
+        { id: 4,  name: Domain.Enums.cardNames.four,  count: _full_value },
+        { id: 5,  name: Domain.Enums.cardNames.five,  count: _full_value },
+        { id: 6,  name: Domain.Enums.cardNames.six,   count: _full_value },
+        { id: 7,  name: Domain.Enums.cardNames.seven, count: _full_value },
+        { id: 8,  name: Domain.Enums.cardNames.eight, count: _full_value },
+        { id: 9,  name: Domain.Enums.cardNames.nine,  count: _full_value },
+        { id: 10, name: Domain.Enums.cardNames.ten,   count: _full_value },
+        { id: 11, name: Domain.Enums.cardNames.jack,  count: _full_value },
+        { id: 12, name: Domain.Enums.cardNames.queen, count: _full_value },
+        { id: 13, name: Domain.Enums.cardNames.king,  count: _full_value }
     ];
 
     var _remove_card = function (card) {

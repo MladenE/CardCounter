@@ -40,6 +40,22 @@ var Enums = (function (DomainNameSpace) {
         queen: "queen",
         king:  "king"
     };
+
+    var _cardIcons = {
+        ace:   "A",
+        two:   "2",
+        three: "3",
+        four:  "4",
+        five:  "5",
+        six:   "6",
+        seven: "7",
+        eight: "8",
+        nine:  "9",
+        ten:   "10",
+        jack:  "J",
+        queen: "Q",
+        king:  "K"
+    };
     
     var _twentyOne = 21;
 
@@ -73,13 +89,14 @@ var Enums = (function (DomainNameSpace) {
         public.hand_types = _hand_types;
         public.numberOfSuits = _numberOfSuits;
         public.cardNames = _cardNames;
+        public.cardIcons = _cardIcons;
         public.twentyOne = _twentyOne;
         public.minimumOf2CardsInAHand = _minimumOf2CardsInAHand;
         public.aceValue = _aceValue;
-        public.countValue = _countValues;
+        public.countValue = _countValue;
         public.indexBounds = _indexBounds;
 
-    DomainNameSpace.Enums = public;
+        DomainNameSpace.Enums = public;
     return DomainNameSpace;
 
 });

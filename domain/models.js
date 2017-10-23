@@ -3,16 +3,16 @@ var Models = (function (DomainNameSpace) {
     // The hands of cards as they appear on the casino table
     var _hand = {
             house: {
-                type: enums.hand_types.house,
+                type: Domain.Enums.hand_types.house,
                 cards: []},
             player: {
                 primary:
                     {
-                        type: enums.hand_types.primary,
+                        type: Domain.Enums.hand_types.primary,
                         cards: []},
                 split:
                     { 
-                        type: enums.hand_types.split,
+                        type: Domain.Enums.hand_types.split,
                         cards: []}
             }
         };

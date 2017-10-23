@@ -3,30 +3,30 @@ var Collection = (function (DomainNameSpace) {
 
     // Reference table to get card values from the cardName passed into the controller.
     var _card = [
-        { id: 1,  name: enums.cardNames.ace,   countValue: enums.countValue.minusOne, value: enums.aceValue.hard },
-        { id: 2,  name: enums.cardNames.two,   countValue: enums.countValue.plusOne,  value: 2 },
-        { id: 3,  name: enums.cardNames.three, countValue: enums.countValue.plusOne,  value: 3 },
-        { id: 4,  name: enums.cardNames.four,  countValue: enums.countValue.plusOne,  value: 4 },
-        { id: 5,  name: enums.cardNames.five,  countValue: enums.countValue.plusOne,  value: 5 },
-        { id: 6,  name: enums.cardNames.six,   countValue: enums.countValue.plusOne,  value: 6 },
-        { id: 7,  name: enums.cardNames.seven, countValue: enums.countValue.zero,     value: 7 },
-        { id: 8,  name: enums.cardNames.eight, countValue: enums.countValue.zero,     value: 8 },
-        { id: 9,  name: enums.cardNames.nine,  countValue: enums.countValue.zero,     value: 9 },
-        { id: 10, name: enums.cardNames.ten,   countValue: enums.countValue.minusOne, value: 10 },
-        { id: 11, name: enums.cardNames.jack,  countValue: enums.countValue.minusOne, value: 10 },
-        { id: 12, name: enums.cardNames.queen, countValue: enums.countValue.minusOne, value: 10 },
-        { id: 13, name: enums.cardNames.king,  countValue: enums.countValue.minusOne, value: 10 }
+        { id: 1,  icon: Domain.Enums.cardIcons.ace,   name: Domain.Enums.cardNames.ace,   countValue: Domain.Enums.countValue.minusOne, value: Domain.Enums.aceValue.hard },
+        { id: 2,  icon: Domain.Enums.cardIcons.two,   name: Domain.Enums.cardNames.two,   countValue: Domain.Enums.countValue.plusOne,  value: 2 },
+        { id: 3,  icon: Domain.Enums.cardIcons.three, name: Domain.Enums.cardNames.three, countValue: Domain.Enums.countValue.plusOne,  value: 3 },
+        { id: 4,  icon: Domain.Enums.cardIcons.four,  name: Domain.Enums.cardNames.four,  countValue: Domain.Enums.countValue.plusOne,  value: 4 },
+        { id: 5,  icon: Domain.Enums.cardIcons.five,  name: Domain.Enums.cardNames.five,  countValue: Domain.Enums.countValue.plusOne,  value: 5 },
+        { id: 6,  icon: Domain.Enums.cardIcons.six,   name: Domain.Enums.cardNames.six,   countValue: Domain.Enums.countValue.plusOne,  value: 6 },
+        { id: 7,  icon: Domain.Enums.cardIcons.seven, name: Domain.Enums.cardNames.seven, countValue: Domain.Enums.countValue.zero,     value: 7 },
+        { id: 8,  icon: Domain.Enums.cardIcons.eight, name: Domain.Enums.cardNames.eight, countValue: Domain.Enums.countValue.zero,     value: 8 },
+        { id: 9,  icon: Domain.Enums.cardIcons.nine,  name: Domain.Enums.cardNames.nine,  countValue: Domain.Enums.countValue.zero,     value: 9 },
+        { id: 10, icon: Domain.Enums.cardIcons.ten,   name: Domain.Enums.cardNames.ten,   countValue: Domain.Enums.countValue.minusOne, value: 10 },
+        { id: 11, icon: Domain.Enums.cardIcons.jack,  name: Domain.Enums.cardNames.jack,  countValue: Domain.Enums.countValue.minusOne, value: 10 },
+        { id: 12, icon: Domain.Enums.cardIcons.queen, name: Domain.Enums.cardNames.queen, countValue: Domain.Enums.countValue.minusOne, value: 10 },
+        { id: 13, icon: Domain.Enums.cardIcons.king,  name: Domain.Enums.cardNames.king,  countValue: Domain.Enums.countValue.minusOne, value: 10 }
     ];
         
 
     // ALL actions are contained in these tables.
-    var h  = enums.actions.hit,
-        s  = enums.actions.stand,
-        dh = enums.actions.doubleHit,
-        ds = enums.actions.doubleStand,
-        p  = enums.actions.split,
-        ph = enums.actions.splitHit,
-        rh = enums.actions.surrenderHit
+    var h  = Domain.Enums.actions.hit,
+        s  = Domain.Enums.actions.stand,
+        dh = Domain.Enums.actions.doubleHit,
+        ds = Domain.Enums.actions.doubleStand,
+        p  = Domain.Enums.actions.split,
+        ph = Domain.Enums.actions.splitHit,
+        rh = Domain.Enums.actions.surrenderHit
 
     var _hard = {
             "8":  [h,h,h,h,h,h,h,h,h,h],
@@ -68,7 +68,7 @@ var Collection = (function (DomainNameSpace) {
         public.split = _split;
         public.card  = _card;
 
-    DomainNameSpace.Collection = public;
+        DomainNameSpace.Collection = public;
     return DomainNameSpace;
 
 });

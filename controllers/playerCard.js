@@ -33,12 +33,12 @@ var PlayerCard = (function (ControllerNameSpace) {
         if (playerHand.cards.length >= Domain.Enums.minimumOf2CardsInAHand) {        
             if (Services.Hand.value_of_hand(playerHand) == Domain.Enums.twentyOne) {
 
-                dto.action = Enums.actions.stand;
+                dto.action = Domain.Enums.actions.stand;
                 dto.message = "Wait for house card.";
 
             } else if (Services.Hand.is_bust(playerHand)) {
 
-                dto.outcome = Enums.outcome.lose;
+                dto.outcome = Domain.Enums.outcome.lose;
                 dto.message = "Bust";
 
             } else {
