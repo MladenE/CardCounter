@@ -17,9 +17,12 @@ var Main = (function (global) {
             Collection(global.Domain);
             Models(global.Domain);
 
-        global.Persistance = {};
-            CardHistory(global.Persistance);
-            Shoe(global.Persistance);
+        global.Persistence = {};
+            MockDatabase(global.Persistence);
+
+        global.Repository = {};
+            CardHistory(global.Repository);
+            Shoe(global.Repository);
         
         global.Services = {};            
             Actions(global.Services);

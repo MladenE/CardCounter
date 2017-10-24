@@ -2,11 +2,14 @@
 var HouseCard = (function (ControllerNameSpace) {
     
     var _play = function (newCard, houseHand) {
+    
+        // get persistence to pass to services
+        var db = Persistence.MockDatabase.document;
 
-        GameState.update_Count(newCard);
-        GameState.update_Remaining_Cards_In_Shoe(newCard);
+        Services.GameState.update_Count(newCard, db);
+        Services.GameState.update_Remaining_Cards_In_Shoe(newCard);
 
-        // loop through the players hands
+        // loop through the player's hands
         // - check if split hand exists before doing logic
         
         var house_hand_value = Hand.value_of_hand(houseHand);

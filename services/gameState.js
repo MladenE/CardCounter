@@ -1,24 +1,24 @@
 var GameState = (function (ServiceNameSpace) {
 
-        var _update_Count = function (card){
+        var _update_Count = function (card, db){
             // add count values to an array
-            Persistance.card_history.push(card);
+            Repository.card_history.add_card(card, db);
         };
 
         var _update_Remaining_Cards_In_Shoe = function (card){
             // find cards by name
             // decrease count by 1
-            Persistance.Shoe.Remove_Card(card);
+            Repository.Shoe.Remove_Card(card);
         };
 
         var _get_trueCount = function (){
             // get average of _count
-            var sum = Persistance.card_history.reduce(
+            var sum = Repository.card_history.reduce(
                 function(accumulator, card)
                 {
                     accumulator + card.countValue
                 }, 0);
-            var trueCount = sum / Persistance.card_history.length;
+            var trueCount = sum / Repository.card_history.length;   // THIS WON'T GET THE .length
             return trueCount;
         };    
 

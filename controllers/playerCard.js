@@ -20,9 +20,12 @@ var PlayerCard = (function (ControllerNameSpace) {
         // get house hand
         var houseHand = Domain.Models.hand.house;
 
+        // get persistence to pass to services
+        var db = Persistence.MockDatabase.document;
+
         // If player and house hands exist
-        GameState.update_Count(newCard);
-        GameState.update_Remaining_Cards_In_Shoe(newCard);
+        Services.GameState.update_Count(newCard, db);
+        Services.GameState.update_Remaining_Cards_In_Shoe(newCard);
 
         // Add card to playerHand
         Services.Hand.add_card(playerHand, newCard);

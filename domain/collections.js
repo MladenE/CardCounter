@@ -18,7 +18,6 @@ var Collection = (function (DomainNameSpace) {
         { id: 13, icon: Domain.Enums.cardIcons.king,  name: Domain.Enums.cardNames.king,  countValue: Domain.Enums.countValue.minusOne, value: 10 }
     ];
         
-
     // ALL actions are contained in these tables.
     var h  = Domain.Enums.actions.hit,
         s  = Domain.Enums.actions.stand,

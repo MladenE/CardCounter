@@ -16,7 +16,7 @@ var MockDatabase = (function (PersistenceNameSpace) {
                 "standOn" : 17,
                 "numberOfDecks" : 6   // etc...
             }
-        }
+        },
         "cardHistory" : [],
         "shoeInstance" : []
     }
@@ -26,4 +26,4 @@ var MockDatabase = (function (PersistenceNameSpace) {
 
     PersistenceNameSpace.MockDatabase = _public;
 
-})();
+});
