@@ -21,8 +21,23 @@ var Models = (function (DomainNameSpace) {
     var _dto = {
             outcome: undefined, // WIN | LOSE | DRAW | undefined
             action:  undefined, // hit | split | stand | double | undefined
-            message: undefined  // Message from collection.<hard | soft | split> | undefined
+            message: undefined  // Message from collection.<hard | soft | split | undefined
         };    
+
+    // The state of the game to pass to persistence after every action.
+    var _gameState = {
+        gameNumber: undefined,      // Incremented after an outcome WIN | LOSE | DRAW
+        turn : {
+            Number: undefined,      // Incremented after each card. Does not reset with game.
+            Card : undefined        // The card that has been dealt
+        },
+        shoe : {
+            Number: undefined,      // Incremented when all counts in shoe == 0
+            Instance: undefined     // Updated after each card
+        },
+        hands: undefined,           // Updated after each card
+        dto: undefined              // Updated after each card
+    };
 
     // Public methods (revealer pattern)
     var public = {};

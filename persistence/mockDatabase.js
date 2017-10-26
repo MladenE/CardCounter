@@ -17,8 +17,7 @@ var MockDatabase = (function (PersistenceNameSpace) {
                 "numberOfDecks" : 6   // etc...
             }
         },
-        "cardHistory" : [],
-        "shoeInstance" : []
+        "gameState" : []
     }
 
     var _public = {};

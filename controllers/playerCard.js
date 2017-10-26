@@ -3,9 +3,6 @@ var PlayerCard = (function (ControllerNameSpace) {
 
     var _play = function (newCardId, isPrimaryHand) {
                     
-        // Create a clean new dto
-        var dto = Object.create(models.dto);
-
         var newCard = Domain.Collection.card.reduce(
                             function(prev, curr) {
                                 return (curr.id == newCardId) ? curr : prev; 
@@ -25,12 +22,14 @@ var PlayerCard = (function (ControllerNameSpace) {
 
         // If player and house hands exist
         Services.GameState.update_Count(newCard, db);
-        Services.GameState.update_Remaining_Cards_In_Shoe(newCard);
+        Services.Shoe.Remove_Card(newCard);
 
         // Add card to playerHand
         Services.Hand.add_card(playerHand, newCard);
 
 
+        // Create a clean new dto
+        var dto = Object.create(Domain.Models.dto);        
 
         // ----------- Put code below this line into a service call -----------
         if (playerHand.cards.length >= Domain.Enums.minimumOf2CardsInAHand) {        

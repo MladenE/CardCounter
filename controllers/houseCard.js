@@ -7,7 +7,7 @@ var HouseCard = (function (ControllerNameSpace) {
         var db = Persistence.MockDatabase.document;
 
         Services.GameState.update_Count(newCard, db);
-        Services.GameState.update_Remaining_Cards_In_Shoe(newCard);
+        Services.Shoe.Remove_Card(newCard);
 
         // loop through the player's hands
         // - check if split hand exists before doing logic
@@ -17,7 +17,7 @@ var HouseCard = (function (ControllerNameSpace) {
         var player_hand_value = Hand.value_of_hand(models.hand.player);
 
         // Create clean new dto
-        var dto = Object.create(models.dto);
+        var dto = Object.create(Domain.Models.dto);
 
         if (house_hand_value < player_hand_value) {
             if (house_hand_value < Session.Config.gameRules.standOn) { // replace 17 with emum for "house stand limit"

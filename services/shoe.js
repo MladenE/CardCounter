@@ -1,7 +1,8 @@
 var Shoe = (function (ServiceNameSpace) {  
 
     /*
-     *  All this should be server side.
+     *  These functions manipulate the local model of the shoe. Not the version in the persistence layer!
+     *  This should not be in the repository!
      */
 
     var _full_value = undefined; 
@@ -23,8 +24,28 @@ var Shoe = (function (ServiceNameSpace) {
         { id: 13, name: Domain.Enums.cardNames.king,  count: _full_value }
     ];
 
-    var _persist = function () {
-        Repository.Shoe.Save(_shoe);
+
+    var _get_number_of_cards_dealt = function () {
+        /*
+            Get number of cards dealt as:
+                cards dealt = total cards in full shoe - cards currently in shoe
+                cards dealt = (cards * suits * decks) - sum(count of each card in shoe)
+        */
+    };
+
+    var _get_remaining_cards_in_shoe = function () {
+        // sum all the count values from all the dealt cards in the current shoe
+        // Needs a Repository call to get the cards
+        var sum = Repository.card_history.reduce(
+            function(accumulator, card)
+            {
+                accumulator + card.countValue
+            }, 0);
+        return sum;
+    };
+
+    var _get_true_count = function (sumOfCountValues, numberOfCardsDealt) {
+        return sumOfCountValues / numberOfCardsDealt;
     };
 
     var _remove_card = function (card) {

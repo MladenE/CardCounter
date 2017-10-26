@@ -72,9 +72,11 @@ var Main = (function (global) {
                 if (!Services.Validate.string(_config.gameName))               throw "gameName is not a string.";
                 if (!Services.Validate.uint(_config.gameRules.standOn))        throw "gameRules.standOn is not an uint.";
                 if (!Services.Validate.uint(_config.gameRules.numberOfDecks))  throw "gameRules.numberOfDecks is not an uint.";
-                if (!Services.Validate.url(_config.connectionString))          throw "connectionString is not a valid url.";
                 
                 global.Session.Config = _config;
+                global.Session.Config.game = 1;
+                global.Session.Config.turn = 1;
+                global.Session.Config.shoe = 0;     // Shoe service should increment this on init and reset
             }
         } catch (err) {
             alert("Config file failed JSON parse! \n\n " + err);
