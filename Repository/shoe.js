@@ -4,6 +4,8 @@ var Shoe = (function (RepositoryNameSpace) {
         Persistence.MockDatabase.document.shoeInstance = shoe;
     };
 
+    // get previous cards (shoeNumber)
+
     var public = {};
         public.Save = _save;
 

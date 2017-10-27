@@ -1,8 +1,7 @@
 var CardHistory = (function (ServicesNameSpace) {  
 
     /*
-        This doesn't have a local working set like Shoe.
-        All CRUD is done in the repository on the Persistence layer.
+        Depreciated! All functionality is done between shoe and gamestate
     */
 
     // Adds card to the persistence layer

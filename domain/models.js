@@ -28,21 +28,22 @@ var Models = (function (DomainNameSpace) {
     var _gameState = {
         gameNumber: undefined,      // Incremented after an outcome WIN | LOSE | DRAW
         turn : {
-            Number: undefined,      // Incremented after each card. Does not reset with game.
-            Card : undefined        // The card that has been dealt
+            number: undefined,      // Incremented after each card. Does not reset with game.
+            card : undefined        // The card that has been dealt
         },
         shoe : {
-            Number: undefined,      // Incremented when all counts in shoe == 0
-            Instance: undefined     // Updated after each card
+            number: undefined,      // Incremented when all counts in shoe == 0
+            instance: []            // Updated after each card
         },
-        hands: undefined,           // Updated after each card
-        dto: undefined              // Updated after each card
+        hands: {},                  // Updated after each card
+        dto: {}                     // Updated after each card
     };
 
     // Public methods (revealer pattern)
     var public = {};
         public.hand = _hand;
         public.dto  = _dto;
+        public.gameState  = _gameState;
 
     // Add methods to the namespace
     DomainNameSpace.Models = public;
