@@ -3,10 +3,6 @@ var HouseCard = (function (ControllerNameSpace) {
     
     var _play = function (newCard, houseHand) {
     
-        // get persistence to pass to services
-        var db = Persistence.MockDatabase.document;
-
-        Services.GameState.update_Count(newCard, db);
         Services.Shoe.Remove_Card(newCard);
 
         // loop through the player's hands
@@ -18,7 +14,9 @@ var HouseCard = (function (ControllerNameSpace) {
 
         // Create clean new dto
         var dto = Object.create(Domain.Models.dto);
+        // Replace the below code with: var dto = Govenor.Action();
 
+        // ----------- This logic needs to be moved to the Govenor application -----------
         if (house_hand_value < player_hand_value) {
             if (house_hand_value < Session.Config.gameRules.standOn) { // replace 17 with emum for "house stand limit"
 

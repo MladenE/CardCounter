@@ -33,6 +33,7 @@ var Models = (function (DomainNameSpace) {
         },
         shoe : {
             number: undefined,      // Incremented when all counts in shoe == 0
+            trueCount: undefined,
             instance: []            // Updated after each card
         },
         hands: {},                  // Updated after each card

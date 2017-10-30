@@ -17,21 +17,17 @@ var PlayerCard = (function (ControllerNameSpace) {
         // get house hand
         var houseHand = Domain.Models.hand.house;
 
-        // get persistence to pass to services
-        var db = Persistence.MockDatabase.document;
-
         // If player and house hands exist
-        Services.GameState.update_Count(newCard, db);
         Services.Shoe.Remove_Card(newCard);
 
         // Add card to playerHand
         Services.Hand.add_card(playerHand, newCard);
 
-
         // Create a clean new dto
-        var dto = Object.create(Domain.Models.dto);        
+        var dto = Object.create(Domain.Models.dto);      
+        // Replace the below code with: var dto = Govenor.Action();
 
-        // ----------- Put code below this line into a service call -----------
+        // ----------- This logic needs to be moved to the Govenor application -----------
         if (playerHand.cards.length >= Domain.Enums.minimumOf2CardsInAHand) {        
             if (Services.Hand.value_of_hand(playerHand) == Domain.Enums.twentyOne) {
 

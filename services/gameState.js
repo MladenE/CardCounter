@@ -23,6 +23,7 @@ var GameState = (function (ServiceNameSpace) {
             gameState.turn.number = Session.Config.turn;
             gameState.turn.card = dealtCard;
             gameState.shoe.number = Session.Config.shoe;
+            gameState.shoe.trueCount = _get_trueCount();
             gameState.shoe.instance = Service.Shoe.GetInstance(); // copy shoe
             gameState.hands = Domain.Models.hands;
             gameState.dto = dto;
