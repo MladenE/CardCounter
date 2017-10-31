@@ -28,7 +28,7 @@ var GameState = (function (ServiceNameSpace) {
             gameState.hands = Domain.Models.hands;
             gameState.dto = dto;
 
-        Repository.GameState.Save(gameState);
+        return gameState;
     };
 
     // Using the revealing module pattern
