@@ -17,9 +17,54 @@ var Collection = (function (DomainNameSpace) {
         { id: 12, icon: Domain.Enums.cardIcons.queen, name: Domain.Enums.cardNames.queen, value: 10 },
         { id: 13, icon: Domain.Enums.cardIcons.king,  name: Domain.Enums.cardNames.king,  value: 10 }
     ];
-    
+        
+    // ALL actions are contained in these tables.
+    var h  = Domain.Enums.actions.hit,
+        s  = Domain.Enums.actions.stand,
+        dh = Domain.Enums.actions.doubleHit,
+        ds = Domain.Enums.actions.doubleStand,
+        p  = Domain.Enums.actions.split,
+        ph = Domain.Enums.actions.splitHit,
+        rh = Domain.Enums.actions.surrenderHit
+
+    var _hard = {
+            "8":  [h,h,h,h,h,h,h,h,h,h],
+            "9":  [h,dh,dh,dh,dh,h,h,h,h,h],
+            "10": [dh,dh,dh,dh,dh,dh,dh,dh,h,h],
+            "11": [dh,dh,dh,dh,dh,dh,dh,dh,dh,h],
+            "12": [h,h,s,s,s,h,h,h,h,h],
+            "13": [s,s,s,s,s,h,h,h,h,h],
+            "14": [s,s,s,s,s,h,h,h,h,h],
+            "15": [s,s,s,s,s,h,h,h,rh,h],
+            "16": [s,s,s,s,s,h,h,rh,rh,rh],
+            "17": [s,s,s,s,s,s,s,s,s,s]
+        };
+
+    var _soft = {
+            "13": [h,h,h,dh,dh,h,h,h,h,h],
+            "14": [h,h,h,dh,dh,h,h,h,h,h],
+            "15": [h,h,dh,dh,dh,h,h,h,h,h],
+            "16": [h,h,dh,dh,dh,h,h,h,h,h],
+            "17": [h,dh,dh,dh,dh,h,h,h,h,h],
+            "18": [s,ds,ds,ds,ds,s,s,h,h,h],
+            "19": [s,s,s,s,s,s,s,s,s,s]
+        };
+
+    var _split = {
+            "22":   [ph,ph,p,p,p,p,h,h,h,h],
+            "33":   [ph,ph,p,p,p,p,h,h,h,h],
+            "44":   [h,h,h,ph,ph,h,h,h,h,h],
+            "66":   [ph,p,p,p,p,h,h,h,h,h],
+            "77":   [p,p,p,p,p,p,h,h,h,h],
+            "88":   [p,p,p,p,p,p,p,p,p,p],
+            "99":   [p,p,p,p,p,s,p,p,s,s],
+            "1111": [p,p,p,p,p,p,p,p,p,p]
+        };
     
     var public = {};
+        public.hard  = _hard;
+        public.soft  = _soft;
+        public.split = _split;
         public.card  = _card;
 
         DomainNameSpace.Collection = public;

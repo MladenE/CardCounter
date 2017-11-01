@@ -24,11 +24,11 @@ var Validate = (function (IntegrityNameSpace) {
     };
 
     var public = {};
-    public.string   = _string;
-    public.int      = _int;
-    public.uint     = _uint;
-    public.url      = _url;
+        public.string   = _string;
+        public.int      = _int;
+        public.uint     = _uint;
+        public.url      = _url;
 
-    IntegrityNameSpace.Validate = public;
+        IntegrityNameSpace.Validate = public;
     return IntegrityNameSpace;
 });
