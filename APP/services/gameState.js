@@ -16,7 +16,7 @@ var GameState = (function (ServiceNameSpace) {
         return trueCount;
     };
 
-    var _persist_game_state = function (dealtCard, dto) {
+    var _get_game_state = function (dealtCard, dto) {
         // collates gamestate and saves to persistence
         var gameState = Object.create(Domain.Models.gameState);
             gameState.gameNumber = Session.Config.gameNumber;
@@ -34,7 +34,7 @@ var GameState = (function (ServiceNameSpace) {
     // Using the revealing module pattern
     var public = {};
         public.getTrueCount = _get_trueCount;
-        public.persistGameState = _persist_game_state;
+        public.persistGameState = _get_game_state;
    
     // Add public methods to the Service NameSpace defined in namespace.js
     ServiceNameSpace.GameState = public;

@@ -4,13 +4,19 @@
 
 var Govenor = (function (ServiceNameSpace) {
 
-    var _get_action = function (gameState){
+    var _get_player_action = function (gameState, playerHand){
+        // ajax call to Govenor
+        return ''; // Returns the dto with player actions.
+    };
+
+    var _get_house_action = function (gameState){
         // ajax call to Govenor
         return ''; // Returns the dto with player actions.
     };
 
     var public = {};
-        public.getAction = _get_action;
+        public.getPlayerAction = _get_player_action;
+        public.getHouseAction = _get_house_action;
 
         // Add public methods to the Service NameSpace defined in namespace.js
         ServiceNameSpace.Govenor = public;

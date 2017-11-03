@@ -13,21 +13,23 @@ var Main = (function (global) {
     var _registerModules = function () {
         
         global.Domain = {};
-            Enums(global.Domain);
+            Enums(global.Domain);       // Moved to Govnr
             Collection(global.Domain);
             Models(global.Domain);
 
+            // Moved to Govnr
         global.Persistence = {};
             MockDatabase(global.Persistence);
 
+            // Moved to Govnr
         global.Repository = {};
             CardHistory(global.Repository);
             Shoe(global.Repository);
         
         global.Services = {};            
-            Actions(global.Services);
-            GameState(global.Services);
-            Hand(global.Services);
+            Actions(global.Services);   // Moved to Govnr
+            GameState(global.Services); 
+            Hand(global.Services);      // Moved to Govnr
             Validate(global.Services)
         
         global.Controllers = {};            
@@ -36,8 +38,10 @@ var Main = (function (global) {
 
     };
 
-    var _getConfigFilePath = function () {
-        // querystring
+    var _getGameId = function () {
+        /* 
+            Gets the gameId from the url to use in communications with the Govenor
+        */
         var match,
             pl     = /\+/g,  // Regex for replacing addition symbol with a space
             search = /([^&=]+)=?([^&]*)/g,
@@ -59,6 +63,15 @@ var Main = (function (global) {
         }
     };
 
+    var _getConfigFile = function () {
+        /*
+            Using the gameId from the querystring, make a call to Govenor to get setup information for the shoe.
+
+            ? Is this needed? Any setup information could just be kept by the Govenor and referenced using the gameId!
+            - Could be useful for the purpose of checking the game you are playing matches the casino.
+        */
+    };
+
     var _parseConfigFile = function () {
         try {
             if (!JSON.parse(_configFilePath)) {
@@ -70,7 +83,7 @@ var Main = (function (global) {
                 if (!Services.Validate.string(_config.playerName))             throw "playerName is not a string.";
                 if (!Services.Validate.string(_config.casinoName))             throw "casinoName is not a string.";
                 if (!Services.Validate.string(_config.gameName))               throw "gameName is not a string.";
-                if (!Services.Validate.uint(_config.gameRules.standOn))        throw "gameRules.standOn is not an uint.";
+                if (!Services.Validate.uint(_config.gameRules.standOn))        throw "gameRules.standOn is not an uint.";       // Not needed. Keep on Govenor!
                 if (!Services.Validate.uint(_config.gameRules.numberOfDecks))  throw "gameRules.numberOfDecks is not an uint.";
                 
                 global.Session.Config = _config;
@@ -89,7 +102,8 @@ var Main = (function (global) {
         // Get player name from querystring (Human name like Matthew, Mark, Luke, John etc..)
         // Get config for player from webService.
         // Load config into session.
-        _getConfigFilePath();
+        _getGameId();
+        _getConfigFile();
         _parseConfigFile();
         // Write game settings to screen
 

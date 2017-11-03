@@ -17,14 +17,17 @@ var Enums = (function (DomainNameSpace) {
         draw: "DRAW"
     };
 
+    // keep in app
     var _hand_types = {
         house:   "house",
         primary: "primary",
         split:   "split"
     };
 
+    // keep in app
     var _numberOfSuits = 4;
 
+    // keep in app
     var _cardNames = {
         ace:   "ace",
         two:   "two",
@@ -41,6 +44,7 @@ var Enums = (function (DomainNameSpace) {
         king:  "king"
     };
 
+    // keep in app
     var _cardIcons = {
         ace:   "A",
         two:   "2",
@@ -61,11 +65,13 @@ var Enums = (function (DomainNameSpace) {
 
     var _minimumOf2CardsInAHand = 2;
 
+    // keep in app
     var _aceValue = {
         hard: 11,
         soft: 1
     };
 
+    // keep in app
     var _countValue = {
         minusOne: -1,
         zero:      0,
